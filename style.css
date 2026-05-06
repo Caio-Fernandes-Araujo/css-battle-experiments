@@ -1,0 +1,1543 @@
+        /* Definição da prioridade dos layers */
+        @layer reset, base, components, state, override;
+
+        :root {
+            --transition-fast: 0.3s ease-in-out;
+            --transition-medium: 0.7s ease-in-out;
+            --transition-slow: 1s ease-in-out;
+            --transition-super-slow: 1.3s ease-in-out;
+            --transition-extra-slow: 2s ease-in-out;
+
+            /* Cores neutras, de uso livre */
+
+            --color-transparent: rgba(0, 0, 0, .5);
+            --color-white: #fff;
+            --color-black: #000;
+            --color-gray: #9897AE;
+            --color-light-gray: #BAC7CE;
+            --color-dark-gray: #222;
+            --color-teal-gray: #475862;
+            --color-paleturquoise: #AFEEEE;
+            --color-pink: #F459E3;
+            --color-purple: #5858c9;
+            --color-dark-purple: #373794;
+            --color-orange: #FF7518;
+            --color-yellow: #F9C96C;
+            --color-golden-yellow: #F3AC3C;
+            --color-red: #cc3225;
+            --color-dark-red: #b8291c;
+            --color-bright-blue: #5DBCF9;
+            --color-light-blue: #73C6EA;
+            --color-dark-blue: #1a3877;
+            --color-light-green: #70CEAF;
+            --color-dark-green: #0E532F;
+            --color-teal-green: #4FA07B;
+            --color-moss-green: #868A64;
+            --color-dark-moss-green: #5A6042;
+            --color-brown-color: #4E2B24;
+            --color-soft-mint: #CAE5DC;
+
+            /* Cores semânticas, de uso estrutural */
+
+            --color-background: var(--color-black);
+            --color-surface: var(--color-dark-gray);
+            --color-surface-light: var(--color-white);
+        }
+
+        html {
+            height: 100%;
+            width: 100%;
+            font-size: 62.5%;
+        }
+
+        body {
+            background: var(--color-background);
+            margin: 0;
+            padding-bottom: 11.5rem;
+        }
+
+        header {
+            width: 90%;
+            margin: 0 auto;
+            padding: 2rem 5rem;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--color-transparent);
+            position: sticky;
+            top: 0;
+            box-sizing: border-box;
+            z-index: 5;     /* Z-indez inserido para o header sobressair a todos os outros elementos com absolute ao scrollar a página */
+        }
+
+        /* Início do Logo */
+
+        .logo-container {
+            height: 7.5rem;
+            width: 10rem;
+            outline: .2rem solid var(--color-paleturquoise);
+            border-radius: .5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .logo-blade-container {
+            height: 5.5rem;
+            width: 2.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .logo-blade-tip {
+            height: .4rem;
+            width: .8rem;
+            background: var(--color-paleturquoise);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        .logo-blade-body {
+            height: 3.45rem;
+            width: .8rem;
+            background: var(--color-paleturquoise);
+        }
+
+        .logo-blade-guard {
+            height: .5rem;
+            width: 2rem;
+            background: var(--color-paleturquoise);
+        }
+
+        .logo-blade-grip {
+            height: 1rem;
+            width: .5rem;
+            background: var(--color-paleturquoise);
+            border-radius: 0 0 .2rem .2rem;
+        }
+
+        .back-blade {
+            transform: translate(1.2rem) rotate(45deg);
+        }
+
+        .front-blade {
+            transform: translate(-1.2rem) rotate(-45deg);
+        }
+
+        .front-blade-body-shadow {
+            box-shadow: 0 0 0 .2rem var(--color-dark-gray);
+        }
+
+        /* Fim do Logo */
+
+        .menu-container{
+            width: 40%;
+        }
+
+        .menu-list {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            padding-left: 0;
+        }
+
+
+        .btn-container {
+            display: inline-block;
+            outline: .2rem solid var(--color-paleturquoise);
+            border-radius: .5rem;
+            padding: 1rem;
+
+        }
+
+        .btn-container a {
+            font-size: 2rem;
+            text-decoration: none;
+            color: var(--color-white);
+        }
+
+        .btnActive {
+            box-shadow: 0 0 2rem .5rem var(--color-paleturquoise);
+        }
+
+        @layer reset {
+            .section-container {
+                width: 90%;
+                min-width: 38rem;
+                background: var(--color-surface);
+                margin: 0 auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+                border-radius: 2rem;
+                padding: 2rem;
+                box-sizing: border-box;
+                gap: 4rem;
+                transition: var(--transition-slow);
+            }
+        }
+
+        
+        @layer base {
+
+            section  {
+                display: none;
+            }
+        }      
+        
+
+        .sectionActive {
+            display: flex;
+        }
+        
+
+        /* essa regra escurece o container section quando algum card está com hover */
+        .section-container:has(.card-container:hover) {
+            background: var(--color-transparent);
+
+        }
+
+        /*essa regra escurece e embaça os demais cards que NÃO ESTÃO com hover quando algum card está hoverado*/
+        .section-container:has(.card-container:hover) .card-container:not(:hover) {
+            /* filter:brightness(0.5); */
+            opacity: .5;
+            filter: blur(.15rem);
+        }
+
+
+        @layer reset {
+            .card-container {
+            height: 30rem;
+            aspect-ratio: 4/3;
+            border: .2rem solid var(--color-paleturquoise);
+            box-sizing: border-box;
+            border-radius: 1rem;
+            transition: var(--transition-slow);
+            position: relative;
+            }
+        }
+        
+
+        .card-container:hover {
+            transform: scale(1.1);
+        }
+
+
+        @media (max-width: 42rem) {
+            .card-container {
+                transform: scale(90%);
+            }
+        }
+
+        /* Aqui começam os cards */
+
+        /* Início do Look Away */
+
+        .look-away-background {
+            background: var(--color-dark-gray);
+            border: .2rem solid var(--color-pink);
+            box-sizing: border-box;
+        }
+
+        .look-away-background:hover {
+            background: var(--color-black);
+            border: .2rem solid var(--color-bright-blue);
+            box-sizing: border-box;
+
+        }
+
+        .look-away-body{
+            width: 24rem;
+            height: 19rem;
+            z-index: 4;
+            transform: rotate(-15deg);
+            position: relative;
+            top: 4.7rem;
+            left: 7.2rem;
+            border-radius: 6.5rem 6.5rem 12rem 12rem;
+            overflow: hidden;
+        }
+
+
+        .look-away-rosa {
+            width: 29.4rem;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: var(--color-pink);
+            position: absolute;
+            top: -4.2rem;
+            right: 6.9rem;
+        }
+
+
+
+        .look-away-laranja {
+            width: 35rem;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: var(--color-orange);
+            position: absolute;
+            top: -5.4rem;
+            right: 3.1rem;
+        }
+
+
+        .look-away-amarelo {
+            width: 40rem;
+            aspect-ratio: 1;
+            background: var(--color-yellow);
+            position: absolute;
+            top: -3rem;
+            border-radius: 50%;
+        }
+
+
+        :is(.look-away-rosa, .look-away-laranja, .look-away-amarelo) {
+            transition:var(--transition-super-slow);     /* O transition será ativado no efeito hover */
+        }
+
+        .look-away-background:hover :is(.look-away-rosa, .look-away-laranja, .look-away-amarelo) {
+            background: var(--color-bright-blue);
+        }
+
+
+        .look-away-eye {
+            width: 8rem;
+            height: 4rem;
+            border: 1.6rem solid var(--color-black);
+            box-sizing: border-box;
+            border-top: none;
+            border-radius: 0 0 5rem 5rem;
+            position: absolute;
+            transform: rotate(15deg);     /*Foi inserido o rotate para anular o rotate negativo herdado do look-away-body */
+        }
+
+
+        .look-away-left-eye {
+            top: 9rem;
+            left: 1.5rem;
+        }
+
+        .look-away-right-eye {
+            top: 11.5rem;
+            left: 10.7rem;
+        }
+
+
+        .look-away-eye-circle {
+            width: 1.5rem;
+            height: 1.5rem;
+            background: var(--color-black);
+            border-radius: 5rem;
+            position: absolute;
+            top: 7.5rem;
+            left: 2.2rem;
+            transform: rotate(15deg);     /*Foi inserido o rotate para anular o rotate negativo herdado do look-away-body */
+            box-shadow: 6.4rem 0, 9.5rem 0, 15.9rem 0;     /* Foi utilizado box-shadow para replicar esse elemento */
+        }
+
+        
+        
+
+        /* @keyframes e classes ativados no javascript */
+
+
+
+
+        .lookAwayContainerActive {
+            background: var(--color-black);
+            box-shadow: 0 0 2rem .5rem var(--color-bright-blue);
+            border-color: var(--color-bright-blue);
+        }
+
+        /*@keyframes swing {
+            from {
+                transform: translateX(-30px) rotate(-15deg);
+            }
+            to {
+                transform: translateX(30px) rotate(-15deg);
+            }
+        }*/
+
+        @keyframes swing {
+            0% {
+                transform: translateX(0px) rotate(-15deg);
+            }
+
+            25% {
+                transform: translateX(30px) rotate(-15deg)
+            }
+
+            50% {
+                transform: translateX(0px) rotate(-15deg);
+            }
+
+            75% {
+                transform: translateX(-30px) rotate(-15deg);
+            }
+
+            100% {
+                transform: translateX(0px) rotate(-15deg);
+            }
+        }
+
+        .lookAwayBodyActive {
+            box-shadow: 0 0 2rem .5rem var(--color-bright-blue);
+            animation: swing 3s linear infinite;
+            /*animation: swing 3s linear infinite alternate;*/ /* o alternate serve para após o término da animação, tocar ela ao contrário */
+        }
+
+        .lookAwayBlueShapesActive {
+            background: var(--color-bright-blue);
+        }
+
+
+        /* Fim do Look Away */
+
+
+        /* Inicio do Ryuk */
+
+        .ryuk-background {
+            background: var(--color-light-gray);
+            border: .1rem solid var(--color-teal-gray);
+            box-sizing: border-box;
+        }
+
+        .ryuk-background:hover {
+            background: var(--color-black);
+        }
+
+        /* foi usada uma cor transparente nesse hover como melhor alternativa para usar uma classe de paleta de cor invertida no evento de click */
+        .ryuk-background:hover :where(.ryuk-hair) {
+            background: var(--color-transparent);
+        }
+
+
+        :where(.ryuk-background:hover .ryuk-eye-contour) {
+            box-shadow: 0 0 1rem .2rem var(--color-dark-moss-green);
+        }
+
+
+        /* classe usada no Javascript */
+        .ryukBackgroundNegative {
+            background: #1b1613;
+            border-color: var(--color-white);
+        }
+
+        .ryuk-hair {
+            height: 9.2rem;
+            width: 18.4rem;
+            background: var(--color-teal-gray);
+            clip-path: polygon(100% 0, 0 0, 50% 100%);
+            position: absolute;
+            margin: 0 10.6rem;
+        }
+
+        /* classe usada no Javascript */
+        .ryukHairNegative {
+            background: #B8A79D;
+        }
+
+
+        .ryuk-eye-contour {
+            height: 12rem;
+            aspect-ratio: 1;
+            background: var(--color-black);
+            position: relative;
+        }
+
+        /* classe usada no Javascript */
+        .ryukEyeContourNegative {
+            background: #FFFFFF;
+        }
+
+
+        .ryuk-eye-dark-green-circle {
+            width: 10rem;
+            aspect-ratio: 1;
+            background: var(--color-dark-moss-green);
+            border-radius: 5rem;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            overflow: hidden;
+            }
+
+
+        /* classe usada no Javascript */    
+        .ryukEyeDarkGreenNegative {
+            background: #A59FBD;
+        }
+
+
+        .ryuk-eye-light-green-circle {
+            width: 10rem;
+            aspect-ratio: 1;
+            background: var(--color-moss-green);
+            border-radius: 5rem;
+            position: absolute;
+            top: 1.4rem;
+            left: -.4rem;
+        }
+
+        /* classe usada no Javascript */
+        .ryukEyeLightGreenNegative {
+            background: #79759B;
+        }
+
+        .ryuk-eye-brown-circle {
+            width: 2.9rem;
+            aspect-ratio: 1;
+            background: var(--color-brown-color);
+            border-radius: 5rem;
+            outline: .6rem solid var(--color-black);
+            position: absolute;
+            top: 2.2rem;
+            right: 3.2rem;
+        }
+
+        /* classe usada no Javascript */
+        .ryukEyeBrownNegative {
+            background: #B1D4DB;
+            outline-color: #fff;
+            box-shadow: 0 0 2rem 1.2rem var(--color-bright-blue);
+        }
+
+
+        .ryuk-left-eye {
+            border-radius:0 50%;
+            top: 12.2rem;
+            left: 2.2rem;
+            rotate: -15deg;
+        }
+
+
+        .ryuk-right-eye {
+            border-radius:50% 0;
+            top: .2rem;
+            left: 25.2rem;
+            rotate: 15deg;
+        }
+
+        /* esse id está substituindo um style inline */
+        #ryuk-right-eye-rotate {
+            rotate: -27deg;
+        }
+
+        :where(.ryuk-background, .ryuk-hair,.ryuk-eye-contour, .ryuk-eye-dark-green-circle, .ryuk-eye-light-green-circle, .ryuk-eye-brown-circle) {
+            transition:var(--transition-super-slow);
+        }
+
+        /* Fim do Ryuk */
+
+        /* Início do Atom */
+
+        .atom-background {
+        transition: var(--transition-slow);
+        }
+
+
+        .atom {
+            height: 11rem;
+            aspect-ratio: 9/4;
+            border: 1rem solid;
+            box-sizing: border-box;
+            border-radius:50%;
+            position: absolute;
+            translate: 6.8rem 8.7rem;
+            transition: var(--transition-slow);
+        }
+
+        .core {
+            height: 4rem;
+            aspect-ratio: 1;
+            background: var(--color-light-blue);
+            border-radius: 50%;
+            position:absolute;
+            top: 12rem;
+            left: 17rem;
+            transition: var(--transition-slow);
+        }
+
+
+        @keyframes ringSpin {
+                to {
+                    transform: rotateX(360deg);
+                }
+            }
+
+
+        .white-rim {
+            color: var(--color-white);
+            animation: ringSpin 1.7s linear infinite;
+        }
+
+        .green-rim {
+            color: var(--color-light-green);
+            rotate: -60deg;
+            animation: ringSpin 2.3s linear infinite;
+        }
+
+        .orange-rim {
+            color: var(--color-orange);
+            rotate: 60deg;
+            animation: ringSpin 3s linear infinite;
+        }
+
+
+
+        @layer reset {
+
+            :where(.atom-background:hover .core) {
+            box-shadow: 0 0 2rem .5rem var(--color-light-blue);
+            }
+
+            :where(.atom-background:hover .white-rim) {
+                box-shadow: 0 0 2rem .5rem var(--color-white);
+            }
+
+            :where(.atom-background:hover .green-rim) {
+                box-shadow: 0 0 2rem .5rem var(--color-light-green);
+            }
+
+            :where(.atom-background:hover .orange-rim) {
+                box-shadow: 0 0 2rem .5rem var(--color-orange);
+            }
+
+        }
+
+
+        /* Classe usada no Javascript */
+        @layer base {
+
+            .atomContainerActive {
+                background: var(--color-black);
+                box-shadow: 0 0 2rem .5rem var(--color-bright-blue);               
+            }
+
+            .atomRingsActive {
+                box-shadow: 0 0 3rem .7rem var(--color-bright-blue);
+            }
+
+        }
+
+        /* Fim do Atom */
+
+        /* Início do Amegakure */
+
+        .amegakure-background  {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition-slow);
+        }
+        .amegakure-hitai-ate {
+            height: 12rem;
+            aspect-ratio: 2/1;
+            background: var(--color-dark-purple);
+            border-radius: 2rem;
+        }
+
+        .amegakure-plate {
+            height: 8rem;
+            width: 20rem;
+            background: var(--color-gray);
+            border-radius: 2rem;
+            margin: auto;
+            margin-top: 2rem;
+            border-radius: 1rem;
+            position: relative;
+            box-shadow: inset 0 0 1rem .2rem rgb(39, 39, 39), 0 0 1.5rem .1rem var(--color-black);
+        }
+
+        .amegakure-circle {
+            height: 1rem;
+            aspect-ratio: 1;
+            background: var(--color-black);
+            border-radius: 50%;
+            box-shadow: 16rem 0, 0 2rem, 16rem 2rem, 0 4rem, 16rem 4rem; /*o box-shadow está replicando este elemento*/
+            position: relative;
+            top: 1.5rem;
+            left: 1.5rem;
+        }
+
+        .amegakure-reflex {
+            height: 8rem;
+            width: 5rem;
+            background: #C0C3DB;
+            opacity: .5;
+            position: absolute;
+            top: 0;
+            left: 7.5rem;
+            transform: skew(-15deg)
+        }
+
+        .amegakure-skyscrapers {
+            height: 5rem;
+            width: 1rem;
+            background: var(--color-black);
+            border-radius: 5rem;
+            box-shadow: 2rem 0,4rem 0,6rem 0; /*o box-shadow está replicando este elemento*/
+            position: relative;
+            top: .5rem;
+            left: 6.5rem;
+        }
+
+        /* Definição de estado */
+        .amegakure-risk {
+            display: none;
+        }
+
+        /* Definição da ação ativada no js */
+        .amegakureRiskActive {
+            height: .5rem;
+            width: 1rem;
+            display: block;
+            background: var(--color-black);
+            border-radius: 50%;
+            position: relative;
+            top: -2.4rem;
+            left: 4rem;
+            /* transform: scaleX(1200%); */
+            transform-origin: left;
+            animation: crossing 500ms linear 50ms normal forwards;
+        }
+
+        @keyframes crossing {
+            to {
+                transform: scaleX(1200%)
+            }
+        }
+
+
+        .amegakure-background:hover {
+        background: var(--color-black);
+        border-color: var(--color-gray);
+        }
+
+
+
+        /* Fim do Amegakure */
+
+
+        /* Início do Kurama */
+
+        .kurama-background {
+            background: var(--color-orange);
+            border-color: var(--color-orange);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 0 3rem .5rem var(--color-black);
+            transition: var(--transition-super-slow); /* Esse transition será ativado no efeito hover */
+        }
+
+        .kurama-eye-contour {
+            height: 20rem;
+            width: 30rem;
+            background: var(--color-black);
+            border-radius: 0 15rem 0 15rem;
+            transform: skew(15deg); /* O skew irá afetar todas as classes filhas diretas e inderetas */
+            transition: var(--transition-super-slow); /* Esse transition será ativado no efeito hover */
+        }
+
+        .kurama-eye-white {          /* Essa classe está com o skew herdado de seu pai */
+            height: 14rem;
+            width: 19rem;
+            background: var(--color-white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 35% 12rem 10% 8rem;
+            position: relative;
+            top: 3rem;
+            left: 7rem;
+            overflow: hidden;
+            box-shadow: inset 0 0 1rem .3rem var(--color-dark-gray);
+        }
+
+        .kurama-eye-red {
+            height: 10rem;
+            aspect-ratio: 1;
+            background: var(--color-red);
+            outline: .4rem solid var(--color-black);
+            border-radius: 50%;
+            transform: skew(-15deg)  translate(.3rem, .5rem); /* Foi inserido o skew negativo para anular o skew herdado */
+            box-shadow: inset 0 0 1.5rem .1rem;
+        }
+
+        .kurama-eye-black {
+            height: 8rem;
+            width: 1rem;
+            background: var(--color-black);
+            border-radius: 50%;
+            margin: 1rem auto;
+        }
+
+        .kurama-background:hover {
+            background: var(--color-black);
+            border: .2rem solid var(--color-black);
+            box-shadow: inset 0 0 1rem .3rem var(--color-red);
+        }
+
+            .kurama-background:hover .kurama-eye-contour {
+                box-shadow: 0 0 2rem .5rem var(--color-red);
+            }
+
+
+        /* classes usadas no javascript */
+        .kuramaEyeActive {
+            background: var(--color-red);
+            box-shadow: 0 0 2.5rem 1rem var(--color-red);
+            transition: var(--transition-slow);
+        }
+
+        .kuramaContainerActive {
+            background: var(--color-black);
+            border-color: var(--color-black);
+            box-shadow: inset 0 0 1rem .3rem var(--color-red);
+        }
+
+        /* Fim do Kurama */
+
+
+        /* Início do Sharingan */
+
+        .sharingan-container {
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            border: .2rem solid var(--color-dark-red);
+            box-sizing: border-box;
+            transition: var(--transition-slow);          /* Define o tempo de transição dos elementos com hover */
+
+        }
+
+        .sharingan-red-circle {
+            height: 19rem;
+            aspect-ratio: 1;
+            background: var(--color-dark-red);
+            rotate: 0deg;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            position: relative;
+            outline: .5rem solid var(--color-black);
+            box-shadow: inset 0 0 1rem .1rem var(--color-dark-gray);
+            transition: var(--transition-extra-slow);
+        }
+
+
+        .sharingan-black-circle {
+            height: 14rem;
+            aspect-ratio: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: .8rem solid var(--color-black);
+            box-sizing: border-box;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .sharingan-black-circle::before {
+            content: "";
+            display: block;
+            height: 3.5rem;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: var(--color-black);
+            box-shadow: 0 0 3rem .5rem var(--color-black);
+        }
+
+        .sharingan-tomoe {
+            height: 4.5rem;
+            aspect-ratio: 1;
+            background: var(--color-dark-red);
+            border-radius: 50%;
+            border: .8rem solid var(--color-black);
+            box-sizing: border-box;
+            position: absolute;
+        }
+
+
+        .sharingan-left-tomoe {
+           top: .8rem;
+            left: -1.5rem;
+        }
+
+        .sharingan-right-tomoe {
+            top: .8rem;
+            left: 9.4rem;
+        }
+
+        .sharingan-bottom-tomoe {
+            top: 10.2rem;
+            left: 4rem;
+        }
+
+        .sharingan-square {
+            height: 3rem;
+            width: 4rem;
+            background: var(--color-black);
+            position: absolute;
+        }
+
+        .sharingan-top-square {
+            top: -3.5rem;
+        }
+
+        .sharingan-left-square {
+            top: 8.7rem;
+            left: -2.7rem;
+            rotate: 60deg;
+        }
+
+        .sharingan-right-square {
+            top: 8.7rem;
+            left: 11.2rem;
+            rotate: -60deg;
+        }
+
+
+        .sharingan-container:hover {
+            background: var(--color-black);
+            border: .2rem solid var(--color-red);
+        }
+
+         .sharingan-container:hover .sharingan-red-circle {
+            transform: rotate(500deg);
+        }
+
+        /* Fim do Sharingan */
+
+
+        /* Início do Punisher */
+
+        .punisher-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--color-black);
+        }
+
+        @layer base {
+
+            .punisher-container:hover {
+                border: .2rem solid var(--color-white);         
+            }
+        }
+
+
+        .punisher-face {
+            width: 14rem;
+            aspect-ratio: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem 0 -2rem 0;
+            border-radius: 50%;
+            transition: var(--transition-slow);
+        }
+
+        .punisher-eye {
+            width: 4.6rem;
+            height: 2.3rem;
+            border-radius: 0 0 2.5rem 2.5rem;
+            transition: var(--transition-slow);
+        }
+
+        .punisher-left-eye {
+            rotate: 28deg;
+            translate: -.4rem 2rem;
+        }
+
+        .punisher-right-eye {
+            rotate: -28deg;
+            translate: .4rem 2rem;
+        }
+        .punisher-nose {
+            width: 2.120rem;
+            height: 3.08rem;
+            margin-block-start: auto;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            translate: 0 -1.4rem;
+            transition: var(--transition-slow);
+        }
+
+        .punisher-jaw {
+            width: 10rem;
+            height: 2rem;
+            transition: var(--transition-slow);
+        }
+
+        .punisher-teeth-container {
+            display: flex;
+            flex-flow: row nowrap;
+            gap: .7rem;    /*espaçamento entre os filhos*/
+            margin:0 0 0 -.2rem; /*espaçamento entre os containers do queixo e dentes*/
+        }
+
+        .punisher-teeth {
+            width: 1.4rem;
+            height: 9.3rem;
+            transition: var(--transition-slow);
+            /*box-shadow: 2rem 0, 4rem 0, 6rem 0; O box-shadow estava replicanto este elemento*/
+        }
+
+        @layer base {
+
+            :where(.punisher-container, .punisher-eye, .punisher-nose) {
+                background: var(--color-black);
+            }
+
+            :where(.punisher-face, .punisher-jaw, .punisher-teeth) {
+                background: var(--color-white);
+            }
+
+            .punisher-container:hover :where(.punisher-face, .punisher-nose, .punisher-jaw, .punisher-teeth) {
+                background: var(--color-black);
+            }
+
+            .punisher-container:hover :where(.punisher-eye) {
+                background: var(--color-white);
+            }
+
+        }
+
+        /* Classes ativadas no Javascript */
+        .punisherContainerActive {
+            background: var(--color-black);
+            border: .2rem solid var(--color-red);         
+            box-sizing: border-box;
+            box-shadow: 0 0 2rem .5rem var(--color-red);
+        }
+
+        .punisherShapeBlackActive {
+            background: var(--color-black);
+        }
+
+        .punisherShapeShadowActive {
+            box-shadow: 0 0 2rem .4rem var(--color-red);
+        }
+
+        .punisherTeethShadowActive {
+            box-shadow: 0 0 3rem .1rem var(--color-red);
+        }       
+
+
+
+
+        /* Fim do Punisher */
+
+        /* Início do Wolverine */
+
+
+        /*.wolverine-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--color-golden-yellow);
+            border: .2rem solid var(--color-golden-yellow);
+            box-shadow: inset 0 0 3rem .5rem var(--color-black);
+        }
+
+        .wolverine-eye-contour {
+            height: 10rem;
+            width: 5rem;
+            background: var(--color-black);
+            position: relative;
+        }
+
+        .wolverine-left-contour {
+            transform:skew(14deg);
+            border-radius:2rem 1rem 0rem 9rem / 9rem 1rem 1rem 3rem;
+            left:-1.3rem;
+        }
+
+        .wolverine-left-contour::before {
+            content: "";
+            display:block;
+            height: 3rem;
+            width: 1rem;
+            background: var(--color-black);
+            position: absolute;
+            top: 9rem;
+            left: .9rem;
+            transform: skew(-10deg);
+        }
+
+         .wolverine-left-contour::after {
+           content: "";
+            display:block;
+            height: 1.5rem;
+            width: 1rem;
+            background: var(--color-black);
+            border-radius: 0 0 0 150%;
+            position: absolute;
+            top: 12rem;
+            left: 1rem;
+           transform: skew(25deg);
+         }
+
+        .wolverine-right-contour {
+            transform: skew(-14deg);
+            border-radius: 1rem 2rem 9rem 0rem / 1rem 9rem 3rem 1rem;
+            left: 1.3rem
+        }
+
+        .wolverine-right-contour::before {
+            content: "";
+            display:block;
+            height: 3rem;
+            width: 1rem;
+            background: var(--color-black);
+            position: absolute;
+            top: 9rem;
+            left: 3rem;
+            transform: skew(10deg);
+        }
+
+          .wolverine-right-contour::after {
+           content: "";
+            display:block;
+            height: 1.5rem;
+            width: 1rem;
+            background: var(--color-black);
+            border-radius: 0 0 100% 0;
+            position: absolute;
+            top: 12rem;
+            left: 2.9rem;
+            transform: skew(-25deg);
+         }
+
+        .wolverine-eye {
+            height: 1.2rem;
+            width: 2rem;
+            background: var(--color-white);
+            position:absolute;
+            top: 7.2rem;
+            border-radius:0 10rem 0 10rem;
+
+        }
+
+        .wolverine-left-eye {
+            rotate: 10deg;
+            left: 2rem;
+        }
+
+
+        .wolverine-right-eye {
+            rotate: -10deg;
+            left: 1rem;
+            border-radius:10rem 0 10rem 0;
+        }
+
+        .wolverine-mouth {
+            height: .8rem;
+            width: 3rem;
+            background: var(--color-white);
+            outline: .1rem solid;
+            border-radius: 15%;
+            position: absolute;
+            top: 21rem;
+            box-shadow: inset 0 0 .1rem 0;
+            z-index: 1;
+        }
+
+        .orange-circle {
+            border-radius: 50%;
+            height: 14rem;
+            aspect-ratio: 1;
+            background: var(--color-golden-yellow);
+            position: absolute;
+            top: 1.8rem;
+            left: 12.8rem;
+            clip-path: inset(50% 0 0 0);
+        }*/
+
+
+        .wolverine-background {
+            background: var(--color-dark-gray);
+            border-color: var(--color-purple);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wolverine-head {
+            width: 8.6rem;
+            height: 8rem;
+            background: var(--color-golden-yellow);
+            border-radius: 50% 50% 0 0;
+            position: relative;
+            transform: translate(-.8rem, -1.4rem);
+    }
+
+        .wolverine-eye-countour {
+            width: 10rem;
+            height: 7rem;
+            background: var(--color-black);
+            position: absolute;
+        }
+
+        .wolverine-left-countour {
+            border-radius: 0 5.2rem 0 6.6rem;
+            top: 2rem;
+            left: -5.6rem;
+        }
+
+        .wolverine-right-countour {
+            border-radius: 5.2rem 0 6.6rem 0;
+            top: 2rem;
+            left: 4.2rem;
+        }
+
+        .wolverine-eye {
+            width: 3rem;
+            height: 2rem;
+            background: var(--color-white);
+        }
+
+        .wolverine-left-eye {
+            margin-block: 4rem;
+            margin-left: 6.5rem;
+            border-radius: 0 5rem 0 5rem;
+        }
+
+        .wolverine-right-eye {
+            border-radius:5rem 0 5rem 0;
+            margin-block: 4rem;
+            margin-left: .6rem;
+        }
+        
+        .wolverine-jaw {
+            width: 8rem;
+            height: 3.5rem;
+            background: var(--color-black);
+            border-radius: 0 0 4rem 4rem;
+            transform: translate(-.8rem, -.4rem);
+        }
+
+        .wolverine-chin {
+            width: 5.5rem;
+            height: 5.1rem;
+            background: var(--color-golden-yellow);
+            border-radius: 0 0 4rem 4rem;
+            margin: 0 auto;
+            border: 1px solid transparent; /*border inserido para o margin do filho direto respeitar o container pai*/
+            box-sizing: border-box;
+        }
+        
+        .wolverine-mouth {
+            width: 4rem;
+            height: 2rem;
+            background: var(--color-white);
+            border-radius: 2rem;
+            margin: 12px auto;
+        }
+
+        /* classes ativadas no javascript */
+
+        .wolverineContainerActive {
+            background: var(--color-black);
+            border-color: var(--color-golden-yellow);
+            box-shadow: 0 0 2rem .5rem var(--color-golden-yellow);
+        }
+
+        .wolverineFaceActive {
+            background: var(--color-black);
+            outline: .2rem solid var(--color-golden-yellow);
+            box-shadow: 0 0 3rem .2rem var(--color-golden-yellow);
+        }
+
+        /* Fim do Wolverine */
+
+        /* Início do Green Lantern */
+
+        .green-lantern-background {
+            color: var(--color-dark-green); /* Este color está definindo a cor de todos os borders e eventuais box-shadows dentro do container */
+            background: var(--color-light-green);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .green-lantern-background:hover {
+                color: var(--color-light-green); /* Este color está definindo a cor de todos os borders e eventuais box-shadows */
+                background: var(--color-black);
+            }
+
+            .green-lantern-background:hover :is(.green-lantern-rectangle-top, .green-lantern-rectangle-bottom) {
+                background: var(--color-light-green);
+            }
+
+        .green-lantern-outside-circle {
+            width: 28rem;
+            aspect-ratio: 1;
+            border: 2.5rem solid;
+            box-sizing: border-box;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition-slow);
+        }
+
+
+        .green-lantern-rectangle-top {
+            height: 2.5rem;
+            width: 14rem;
+            background: var(--color-dark-green);
+            transform: translateY(1rem);
+            transition: 1.05s ease-in-out;
+            border-top: 2.5rem solid;
+            box-sizing: border-box;
+        }
+
+        .green-lantern-inside-circle {
+            width: 14rem;
+            aspect-ratio: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2.5rem solid;
+            box-sizing: border-box;
+            border-radius: 50%;
+            transition: var(--transition-slow);
+            z-index: 1;
+            /* translate: 0 -1.5rem; */
+        }
+
+        .green-lantern-core {
+            width: 9rem;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            transition: var(--transition-slow);
+        }
+
+        .green-lantern-rectangle-bottom {
+            height: 2.5rem;
+            width: 14rem;
+            background: var(--color-dark-green);
+            transform: translateY(-1rem);
+            transition: 1.05s ease-in-out;
+            border-bottom: 2.5rem solid;
+            box-sizing: border-box;
+        }
+
+        /* Classes ativadas no Javascript */
+
+        .lanternActive {
+            background: var(--color-black);
+            color: var(--color-light-green);
+            box-shadow: 0 0 2.5rem 1rem var(--color-light-green);
+        }
+
+        .lanternCoreActive {
+            box-shadow: inset 0 0 2.5rem .7rem var(--color-light-green);
+        }
+        /* Fim do Green Lantern */
+
+
+        /* Início do Fountain */
+
+        .fountain-background {
+            color: var(--color-black);
+            background: var(--color-teal-green);
+            border: .2rem solid var(--color-teal-green);
+        }
+
+            .fountain-background:hover {
+                background: var(--color-black);
+                color: var(--color-teal-green);
+                /* box-shadow: 0 0 2rem .5rem var(--color-bright-blue); */
+            }
+
+            /* classe usada no javascript */
+            .fountainBackgroundActive {
+                background: var(--color-black);
+                color: var(--color-teal-green);
+            }
+
+        .fountain-outside {
+            width: 14rem;
+            height: 11.7rem;
+            border-radius: 7rem 7rem 0 0;
+            border: 2rem solid;
+            box-sizing: border-box;
+            border-bottom: none;
+        }
+
+        .fountain-inside {
+            width: 6rem;
+            height: 10rem;
+            border-radius: 7rem 7rem 0 0;
+            border: 2rem solid;
+            border-bottom: none;
+            box-sizing: border-box;
+            margin:2rem auto;
+        }
+
+        #fountain-inside-adjust {
+            height: 8.5rem;
+        }
+
+        .fountain-refinement {
+           height: 6.3rem;
+           width: 2rem;
+           translate: 0rem -12.2rem;
+           box-shadow: 14.2rem -2rem, 18.2rem 0rem, 22.2rem -2rem;
+
+        }
+
+        .fountain-top {
+            translate: 12.2rem 1.2rem;
+        }
+
+        .fountain-left {
+            translate: 6.2rem -.5rem
+        }
+
+        .fountain-right {
+            translate: 18.2rem -12.2rem
+        }
+
+        @keyframes bright {
+            0% {
+                box-shadow: .5rem -.7rem 2rem .5rem var(--color-teal-green);
+                color: var(--color-teal-green);
+            }
+
+            50% {
+                box-shadow: .5rem -.7rem 2rem .5rem var(--color-bright-blue);
+                color: var(--color-bright-blue);
+            }
+
+            100% {
+                box-shadow: .5rem -.7rem 2rem .5rem var(--color-purple);
+                color: var(--color-purple);
+            }
+        }
+
+        /* classe usada no javascript */
+        .fountainActive {
+            animation: bright 3s linear infinite;
+        }
+
+        /* Fim do Fountain */
+
+
+        /* Início do One Piece */
+
+        .one-piece-background {
+            color: var(--color-white); /* este color está definindo a cor de todos os box-shadows */
+        }
+
+            .one-piece-background:hover {
+                color: var(--color-black); /* Troca a color de todos os box-shadows com hover */
+                background: var(--color-soft-mint);
+            }
+
+        .one-piece-circle-bone {
+            width: 2.5rem;
+            aspect-ratio: 1;
+            background: var(--color-white);
+            position: relative;
+            top: 8.7rem;
+            left: 9.2rem;
+            border-radius: 50%;
+            box-shadow: 1rem -1rem,17.5rem -1rem, 18.5rem 0, 18.5rem 10.5rem,17.5rem 11.5rem, 1rem 11.5rem,0 10.4rem; /* Foi utilizado box-shadow para replicar este elemento várias vezes */
+        }
+        .one-piece-square-bone {
+            width: 2rem;
+            aspect-ratio: 1;
+            background: var(--color-white);
+            position: relative;
+            top: 16.3rem;
+            left: 11.1rem;
+            rotate: -45deg;
+            box-shadow: 6.5rem -6.6rem, 17.4rem 4.2rem, 10.8rem 10.8rem; /* Foi utilizado box-shadow para replicar este elemento várias vezes */
+        }
+
+        .one-piece-face {
+            height: 10rem;
+            aspect-ratio: 15/10;
+            background: var(--color-white);
+            position: relative;
+            top: 16.3rem;
+            left: .5rem;
+            border-radius: 5rem;
+            margin: -10.6rem 11.7rem;
+        }
+
+        .one-piece-eye, .one-piece-right-eye  {
+
+            height: 4rem;
+            aspect-ratio: 5/4;
+            background: var(--color-surface);
+            position: relative;
+            top: 3rem;
+            left: 2rem;
+            border-radius: 50%;
+            rotate: -30deg
+        }
+
+        .one-piece-right-eye {
+            top: -1rem;
+            left: 8rem;
+            rotate: 30deg;
+        }
+
+        .one-piece-tooth {
+            height: 2rem;
+            aspect-ratio: 1.5/2;
+            background: var(--color-white);
+            position: relative;
+            top: 27.9rem;
+            left: 17rem;
+            box-shadow: 2rem 0, 4rem 0;
+        }
+
+        :is(.one-piece-circle-bone, .one-piece-square-bone, .one-piece-face, .one-piece-tooth) {
+            transition: var(--transition-slow);          /* Define o tempo de transição dos elementos com hover */
+        }
+
+         :is(.one-piece-eye, .one-piece-right-eye) {
+            transition: var(--transition-slow);
+         }
+
+
+
+        .one-piece-background:hover :is(.one-piece-circle-bone, .one-piece-square-bone, .one-piece-face, .one-piece-tooth) {
+            background: var(--color-black);
+        }
+
+
+        .one-piece-background:hover :is(.one-piece-eye, .one-piece-right-eye) {
+            background: var(--color-soft-mint);
+        }
+
+        /* Fim do One Piece */
+
+        /*Acessibilidade para leitores de tela*/
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+            }
