@@ -411,16 +411,6 @@
             background: var(--color-black);
         }
 
-        /* foi usada uma cor transparente nesse hover como melhor alternativa para usar uma classe de paleta de cor invertida no evento de click */
-        .ryuk-background:hover :where(.ryuk-hair) {
-            background: var(--color-transparent);
-        }
-
-
-        :where(.ryuk-background:hover .ryuk-eye-contour) {
-            box-shadow: 0 0 1rem .2rem var(--color-dark-moss-green);
-        }
-
 
         /* classe usada no Javascript */
         .ryukBackgroundNegative {
@@ -437,6 +427,11 @@
             margin: 0 10.6rem;
         }
 
+        /* foi usada uma cor transparente nesse hover como melhor alternativa para usar uma classe de paleta de cor invertida no evento de click */
+        .ryuk-background:hover :where(.ryuk-hair) {
+            background: var(--color-transparent);
+        }
+
         /* classe usada no Javascript */
         .ryukHairNegative {
             background: #B8A79D;
@@ -450,9 +445,15 @@
             position: relative;
         }
 
+        :where(.ryuk-background:hover .ryuk-eye-contour) {
+            box-shadow: 0 0 1rem .2rem var(--color-dark-moss-green);
+        }
+
+        
+
         /* classe usada no Javascript */
         .ryukEyeContourNegative {
-            background: #FFFFFF;
+            background: var(--color-white);
         }
 
 
@@ -500,10 +501,22 @@
             right: 3.2rem;
         }
 
-        /* classe usada no Javascript */
+        .ryuk-background:hover .ryuk-eye-brown-circle {
+            background: var(--color-dark-red);
+            box-shadow: 0 0 3rem .5rem var(--color-dark-red);
+        }
+
+        /* classes usadas no Javascript */
+        
         .ryukEyeBrownNegative {
             background: #B1D4DB;
-            outline-color: #fff;
+            outline-color: var(--color-white);
+            box-shadow: 0 0 2rem 1.2rem var(--color-bright-blue);
+        }
+
+        /* Foi usado um hover na classe JS para sobrescrever o hover da classe normal */
+        .ryuk-background:hover .ryukEyeBrownNegative {
+            background: #B1D4DB;
             box-shadow: 0 0 2rem 1.2rem var(--color-bright-blue);
         }
 
@@ -1351,7 +1364,6 @@
         /* Início do Fountain */
 
         .fountain-background {
-            color: var(--color-black);
             background: var(--color-teal-green);
             border: .2rem solid var(--color-teal-green);
         }
@@ -1360,12 +1372,6 @@
                 background: var(--color-black);
                 color: var(--color-teal-green);
                 /* box-shadow: 0 0 2rem .5rem var(--color-bright-blue); */
-            }
-
-            /* classe usada no javascript */
-            .fountainBackgroundActive {
-                background: var(--color-black);
-                color: var(--color-teal-green);
             }
 
         .fountain-outside {
@@ -1379,7 +1385,7 @@
 
         .fountain-inside {
             width: 6rem;
-            height: 10rem;
+            height: 7.7rem;
             border-radius: 7rem 7rem 0 0;
             border: 2rem solid;
             border-bottom: none;
@@ -1387,51 +1393,78 @@
             margin:2rem auto;
         }
 
-        #fountain-inside-adjust {
-            height: 8.5rem;
+        .fountain-out-adjust {
+            height: 13.5rem;
         }
 
-        .fountain-refinement {
-           height: 6.3rem;
-           width: 2rem;
-           translate: 0rem -12.2rem;
-           box-shadow: 14.2rem -2rem, 18.2rem 0rem, 22.2rem -2rem;
-
+        .fountain-in-adjust {
+            height: 9.6rem;
         }
+
+        :where(.fountain-outside) {
+            background: var(--color-teal-green);
+            color: var(--color-black);
+            transition: var(--transition-slow);
+        }
+
+        :where(.fountain-background:hover .fountain-outside) {
+            background: var(--color-black);
+            color: var(--color-teal-green);
+        }
+
 
         .fountain-top {
-            translate: 12.2rem 1.2rem;
+            translate: 13rem 3.5rem;
         }
 
         .fountain-left {
-            translate: 6.2rem -.5rem
+            translate: 6.2rem 1.5rem
         }
 
         .fountain-right {
             translate: 18.2rem -12.2rem
         }
 
+
+         /* classe usada no javascript*/
+        .fountainActive {
+            background: var(--color-black);
+            color: var(--color-teal-green);
+            animation: bright 5s infinite;
+        }
+
         @keyframes bright {
             0% {
-                box-shadow: .5rem -.7rem 2rem .5rem var(--color-teal-green);
+                box-shadow: 0 0 2rem .5rem var(--color-teal-green);
                 color: var(--color-teal-green);
             }
 
-            50% {
-                box-shadow: .5rem -.7rem 2rem .5rem var(--color-bright-blue);
+            20% {
+                box-shadow: 0 0 2rem .5rem var(--color-paleturquoise);
+                color: var(--color-paleturquoise);
+            }
+
+            40% {
+                box-shadow: 0 0 2rem .5rem var(--color-light-blue);
+                color: var(--color-light-blue);
+            }
+
+            60% {
+                box-shadow: 0 0 2rem .5rem var(--color-bright-blue);
                 color: var(--color-bright-blue);
             }
 
+            80% {
+                box-shadow: 0 0 2rem .5rem var(--color-light-green);
+                color: var(--color-light-green);
+            }
+
             100% {
-                box-shadow: .5rem -.7rem 2rem .5rem var(--color-purple);
-                color: var(--color-purple);
+                box-shadow: 0 0 2rem .5rem var(--color-teal-green);
+                color: var(--color-teal-green);
             }
         }
 
-        /* classe usada no javascript */
-        .fountainActive {
-            animation: bright 3s linear infinite;
-        }
 
         /* Fim do Fountain */
 

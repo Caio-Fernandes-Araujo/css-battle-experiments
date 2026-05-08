@@ -330,7 +330,7 @@
         const fountainShapes = document.querySelectorAll('.js-fountain');
 
         function fountainActive() {
-            fountainContainer.classList.toggle('fountainBackgroundActive');
+            fountainContainer.classList.toggle('fountainActive');
 
             fountainShapes.forEach(el => {
             el.classList.toggle('fountainActive')
