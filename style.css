@@ -58,17 +58,25 @@
 
         header {
             width: 90%;
+            min-width: 40rem;
             margin: 0 auto;
             padding: 2rem 5rem;
             display: flex;
             flex-flow: row wrap;
             justify-content: space-between;
             align-items: center;
+            gap: 2rem;
             background: var(--color-transparent);
             position: sticky;
             top: 0;
             box-sizing: border-box;
             z-index: 5;     /* Z-indez inserido para o header sobressair a todos os outros elementos com absolute ao scrollar a página */
+        }
+
+        @media (max-width: 564px) {
+            header {
+                justify-content: flex-start;
+            }
         }
 
         /* Início do Logo */
@@ -96,7 +104,7 @@
         .logo-blade-tip {
             height: .4rem;
             width: .8rem;
-            background: var(--color-dark-blue);
+            background: var(--color-paleturquoise);
             clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
         }
 
@@ -133,18 +141,20 @@
 
         /* Fim do Logo */
 
-        .menu-container{
-            width: 40%;
-        }
+        /* Menu */
 
-        .menu-list {
-            width: 100%;
+        .menu-list-container {
+            width: 40%;
+            min-width: 27.5rem;
             display: flex;
             justify-content: space-evenly;
+            gap: 1rem;
             padding-left: 0;
         }
 
 
+        /* Botões */
+        
         .btn-container {
             display: inline-block;
             outline: .2rem solid var(--color-paleturquoise);
@@ -227,7 +237,7 @@
         }
 
 
-        @media (max-width: 42rem) {
+        @media (max-width: 420px) {
             .card-container {
                 transform: scale(90%);
             }
