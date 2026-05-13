@@ -338,10 +338,31 @@
 
         }
 
-        fountainContainer.addEventListener('click', () =>{
+        fountainContainer.addEventListener('click', () => {
 
             fountainActive();
 
         });
 
         // Fim do fountain
+
+        // Início do mosaic
+
+            const mosaicContainer = document.querySelector('.mosaic-container');
+            const mosaicShapes = document.querySelectorAll('.mosaic__block');
+
+            function mosaicChangeColors() {
+
+                mosaicShapes.forEach(el => {
+                    el.classList.toggle('mosaicActive')
+                });
+
+            }
+
+            mosaicContainer.addEventListener('click', () =>{
+
+                mosaicChangeColors();
+
+            });
+
+        // Fim do mosaic
