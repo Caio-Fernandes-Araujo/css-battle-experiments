@@ -1482,6 +1482,7 @@
         /* Início do Mosaic */
 
         .mosaic-container {
+            min-width: 400px;
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
@@ -1547,6 +1548,26 @@
         /* classe usada no Javascript */
         .mosaicActive {
             animation: flow 5s linear infinite alternate;
+        }
+
+        /* adiciona um delay específico na animação do quadrante principal(.mosaic--top-left) e todos os seus filhos que têm essa classe */
+        .mosaic--top-left.mosaicActive, .mosaic--top-left .mosaicActive {
+            animation-delay: 1s;
+        }
+
+        /* adiciona um delay específico na animação do quadrante principal(.mosaic--top-right) e todos os seus filhos que têm essa classe */
+        .mosaic--top-right.mosaicActive, .mosaic--top-right .mosaicActive {
+            animation-delay: 2s;
+        }
+
+        /* adiciona um delay específico na animação do quadrante principal(.mosaic--bottom-left) e todos os seus filhos que têm essa classe*/
+        .mosaic--bottom-left.mosaicActive, .mosaic--bottom-left .mosaicActive {
+            animation-delay: 3s;
+        }
+
+        /* adiciona um delay específico na animação do quadrante principal(.mosaic--bottom-right) e todos os seus filhos que têm essa classe*/
+        .mosaic--bottom-right.mosaicActive, .mosaic--bottom-right .mosaicActive {
+            animation-delay: 4s;
         }
 
         @keyframes flow {
