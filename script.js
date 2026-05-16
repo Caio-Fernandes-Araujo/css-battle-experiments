@@ -195,13 +195,12 @@
         // Início do One Piece
 
         const OnePieceContainer = document.querySelector('.one-piece-background');
-        const OnePieceHatPlace = document.createElement('div');
+        const OnePieceDiv = document.createElement('div');
         
         function AddHat() {         
-            OnePieceHatPlace.classList.toggle('onePieceHat');
-            OnePieceHatPlace.classList.toggle('onePieceHatAnimation');
-
-            OnePieceContainer.appendChild(OnePieceHatPlace);
+            OnePieceDiv.classList.toggle('onePieceHat');
+            OnePieceDiv.classList.toggle('onePieceHatAnimation');
+            OnePieceContainer.appendChild(OnePieceDiv);
             OnePieceContainer.classList.toggle('onePieceContainerActive');
         }
 
