@@ -192,6 +192,48 @@
 
         // Fim do Kurama
 
+        // Início do One Piece
+
+        const OnePieceContainer = document.querySelector('.one-piece-background');
+        const OnePieceHatPlace = document.createElement('div');
+        
+        function AddHat() {         
+            OnePieceHatPlace.classList.toggle('onePieceHat');
+            OnePieceHatPlace.classList.toggle('onePieceHatAnimation');
+
+            OnePieceContainer.appendChild(OnePieceHatPlace);
+            OnePieceContainer.classList.toggle('onePieceContainerActive');
+        }
+
+        OnePieceContainer.addEventListener('click', () =>{
+            AddHat();
+        })
+
+        // v2 do script de toggle do chapéu (incompleto)
+
+        /*const onePieceContainer = document.querySelector('.one-piece-background');
+        const onePieceHatPlace = document.querySelector('#hat');
+        
+        function hatExist() {
+            onePieceHatPlace.classList.add('onePieceHat');
+            let hatAnimation = document.querySelector('.onePieceHatAnimation');
+            onePieceHatPlace.classList.toggle('onePieceHatAnimation');
+            if (hatAnimation) {
+                onePieceHatPlace.classList.toggle('onePieceHatAnimationReverse');
+                setTimeout(() => {
+                    onePieceHatPlace.classList.remove('onePieceHat');
+                }, 1000);
+            }
+        
+            
+        }
+        
+        onePieceContainer.addEventListener('click', () => {
+            hatExist();
+        });*/
+
+        // Fim do One Piece
+
         // Início do Punisher
 
         const punisherContainer = document.querySelector('.punisher-container');

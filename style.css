@@ -1642,12 +1642,6 @@
         .one-piece-background {
             color: var(--color-white); /* este color está definindo a cor de todos os box-shadows */
         }
-
-            .one-piece-background:hover {
-                color: var(--color-black); /* Troca a color de todos os box-shadows com hover */
-                background: var(--color-soft-mint);
-            }
-
         .one-piece-circle-bone {
             width: 2.5rem;
             aspect-ratio: 1;
@@ -1708,24 +1702,82 @@
             box-shadow: 2rem 0, 4rem 0;
         }
 
-        :is(.one-piece-circle-bone, .one-piece-square-bone, .one-piece-face, .one-piece-tooth) {
+        :is(.one-piece-circle-bone, .one-piece-square-bone, .one-piece-face, .one-piece-eye, .one-piece-right-eye, .one-piece-tooth) {
             transition: var(--transition-slow);          /* Define o tempo de transição dos elementos com hover */
         }
 
-         :is(.one-piece-eye, .one-piece-right-eye) {
-            transition: var(--transition-slow);
-         }
 
+        /* classes usadas no javascript */
 
-
-        .one-piece-background:hover :is(.one-piece-circle-bone, .one-piece-square-bone, .one-piece-face, .one-piece-tooth) {
+        .onePieceContainerActive {
             background: var(--color-black);
+            box-shadow:inset 0 0 1rem .2rem var(--color-white);
+            border-color: var(--color-white);
         }
 
-
-        .one-piece-background:hover :is(.one-piece-eye, .one-piece-right-eye) {
-            background: var(--color-soft-mint);
+        .onePieceHat {
+            width: 125px;
+            height: 60px;
+            border-radius: 60px 60px 0 0;
+            background: linear-gradient(
+                to bottom,
+                var(--color-golden-yellow) 0%,
+                var(--color-golden-yellow) 66%,
+                var(--color-dark-red) 66%,
+                var(--color-dark-red) 100%
+            );
+            position: absolute;
+            top: 60px;
+            left: 134px;
+            box-shadow: 0 0 2rem .5rem var(--color-dark-red);
         }
+    
+        .onePieceHat::after {
+            content: "";
+            width: 170px;
+            height: 10px;
+            background: var(--color-golden-yellow);
+            border-radius: 50px;
+            position: absolute;
+            top: 60px;
+            left: -25px;
+            box-shadow: 0 0 2rem .5rem var(--color-dark-red);
+        }
+    
+        .onePieceHatAnimation {
+            animation: hat 2s linear infinite alternate;
+        }
+    
+    
+    
+        @keyframes hat {
+            from {
+                transform: rotate(-48deg) translate(-50px);
+                transform-origin: left;
+            }
+    
+            to {
+                transform: rotate(0deg) translate(0px);
+                transform-origin: left;
+            }
+        }
+
+        /* v2 da animation que será usada no js (incompleto) */
+        /*.onePieceHatAnimationReverse {
+            animation: hatReverse 2s;
+        }
+
+        @keyframes hatReverse {
+            from {
+                transform: rotate(0deg) translate(0px);
+                transform-origin: left;
+            }
+    
+            to {
+                transform: rotate(-48deg) translate(-50px);
+                transform-origin: left;
+            }
+        }*/
 
         /* Fim do One Piece */
 
