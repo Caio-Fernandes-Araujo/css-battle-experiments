@@ -194,42 +194,30 @@
 
         // Início do One Piece
 
-        const OnePieceContainer = document.querySelector('.one-piece-background');
-        const OnePieceDiv = document.createElement('div');
-        
-        function AddHat() {         
-            OnePieceDiv.classList.toggle('onePieceHat');
-            OnePieceDiv.classList.toggle('onePieceHatAnimation');
-            OnePieceContainer.appendChild(OnePieceDiv);
-            OnePieceContainer.classList.toggle('onePieceContainerActive');
-        }
+        // v2 do script do chapéu finalizada
+        const onePieceContainer = document.querySelector('.one-piece-background');
+        const onePieceDiv = document.createElement('div');
 
-        OnePieceContainer.addEventListener('click', () =>{
-            AddHat();
-        })
+        function addHat() {
+            onePieceContainer.classList.toggle('onePieceContainerActive');
+            onePieceContainer.appendChild(onePieceDiv);
+            onePieceDiv.classList.add('onePieceHat');
 
-        // v2 do script de toggle do chapéu (incompleto)
-
-        /*const onePieceContainer = document.querySelector('.one-piece-background');
-        const onePieceHatPlace = document.querySelector('#hat');
-        
-        function hatExist() {
-            onePieceHatPlace.classList.add('onePieceHat');
-            let hatAnimation = document.querySelector('.onePieceHatAnimation');
-            onePieceHatPlace.classList.toggle('onePieceHatAnimation');
-            if (hatAnimation) {
-                onePieceHatPlace.classList.toggle('onePieceHatAnimationReverse');
+            if(!onePieceDiv.classList.contains('onePieceHatAnimation')) {
+                onePieceDiv.classList.remove('onePieceHatAnimationReverse');
+                onePieceDiv.classList.add('onePieceHatAnimation');
+            } else {
+                onePieceDiv.classList.remove('onePieceHatAnimation');
+                onePieceDiv.classList.add('onePieceHatAnimationReverse');
                 setTimeout(() => {
-                    onePieceHatPlace.classList.remove('onePieceHat');
-                }, 1000);
+                   onePieceDiv.classList.remove('onePieceHat')
+                }, 1750);
             }
-        
-            
         }
-        
-        onePieceContainer.addEventListener('click', () => {
-            hatExist();
-        });*/
+
+        onePieceContainer.addEventListener('click', () =>{
+            addHat();
+        })
 
         // Fim do One Piece
 
