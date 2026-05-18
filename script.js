@@ -194,8 +194,42 @@
 
         // Início do One Piece
 
-        // v2 do script do chapéu finalizada
+        // v3 do script do one piece com trava de cliques durante a animação
+        
         const onePieceContainer = document.querySelector('.one-piece-background');
+        const onePieceDiv = document.createElement('div');
+
+        let hatIsAnimating = false;
+
+        function addHat() {
+            if(hatIsAnimating) return;
+            hatIsAnimating = true;
+
+            onePieceContainer.classList.toggle('onePieceContainerActive');
+            onePieceContainer.appendChild(onePieceDiv);
+            onePieceDiv.classList.add('onePieceHat');
+
+            if(!onePieceDiv.classList.contains('onePieceHatAnimation')) {
+                onePieceDiv.classList.remove('onePieceHatAnimationReverse');
+                onePieceDiv.classList.add('onePieceHatAnimation');
+            } else {
+                onePieceDiv.classList.remove('onePieceHatAnimation');
+                onePieceDiv.classList.add('onePieceHatAnimationReverse');
+                setTimeout(() => {
+                   onePieceDiv.classList.remove('onePieceHat')
+                }, 1750);
+            }
+        }
+
+        onePieceDiv.addEventListener('animationend', () => {
+            hatIsAnimating = false
+        });
+        onePieceContainer.addEventListener('click', () => {
+            addHat();
+        });
+
+        // v2 do script do chapéu finalizada
+        /*const onePieceContainer = document.querySelector('.one-piece-background');
         const onePieceDiv = document.createElement('div');
 
         function addHat() {
@@ -217,7 +251,7 @@
 
         onePieceContainer.addEventListener('click', () =>{
             addHat();
-        })
+        })*/
 
         // Fim do One Piece
 
