@@ -160,7 +160,42 @@
 
         // Início do Amegakure
 
+        // v2 do script do amegakure com a lógica de trava de clique durante a animação
         const amegakureContainer = document.querySelector('.amegakure-background');
+        const amegakurePlate = document.querySelector('.amegakure-plate');
+        const amegakureDiv = document.createElement('div');
+
+        let riskIsAnimating = false;
+
+            function amegakureRiskCross() {
+                if(riskIsAnimating) return;
+
+                riskIsAnimating = true;
+
+                amegakurePlate.appendChild(amegakureDiv);
+                amegakureDiv.classList.add('amegakureRisk');
+                
+                if(!amegakureDiv.classList.contains('amegakureRiskAnimation')) {
+                    amegakureDiv.classList.remove('amegakureRiskAnimationReverse');
+                    amegakureDiv.classList.add('amegakureRiskAnimation');
+                } else {
+                    amegakureDiv.classList.remove('amegakureRiskAnimation');
+                    amegakureDiv.classList.add('amegakureRiskAnimationReverse');
+                    setTimeout(() => {
+                        amegakureDiv.classList.remove('amegakureRisk');
+                    }, 500);
+                }
+            }
+
+        amegakureDiv.addEventListener('animationend', () => {
+            riskIsAnimating = false;
+        });
+        amegakureContainer.addEventListener('click', () => {
+            amegakureRiskCross();
+        });
+
+        // v1 do script do amegakure - sem trava de clique
+        /*const amegakureContainer = document.querySelector('.amegakure-background');
         const amegakurePlate = document.querySelector('.amegakure-plate');
         const amegakureDiv = document.createElement('div');
 
@@ -175,7 +210,8 @@
                     amegakureDiv.classList.remove('amegakureRiskAnimation');
                     amegakureDiv.classList.add('amegakureRiskAnimationReverse');
                     setTimeout(() => {
-                        amegakureDiv.classList.remove('amegakureRisk')
+                        amegakureDiv.classList.remove('amegakureRisk');
+                        amegakureDiv.classList.remove('amegakureRiskAnimationReverse');
                     }, 450);
                 }
             }
@@ -187,7 +223,7 @@
 
             //função de toggle simples reutilizável
         //     alternarClasse(amegakureRisco, 'amegakureRiskActive');
-        // });
+        // });*/
 
         // Fim do Amegakure
 
@@ -219,6 +255,7 @@
 
         function addHat() {
             if(hatIsAnimating) return;
+            
             hatIsAnimating = true;
 
             onePieceContainer.classList.toggle('onePieceContainerActive');
