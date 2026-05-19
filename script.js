@@ -161,17 +161,21 @@
         // Início do Amegakure
 
         const amegakureContainer = document.querySelector('.amegakure-background');
-        const amegakureRisco = document.querySelector('.amegakure-risk');
+        const amegakurePlate = document.querySelector('.amegakure-plate');
+        const amegakureDiv = document.createElement('div');
 
-            /*function amegakureRiskCross() {
-                amegakureRisco.classList.toggle('amegakureRiskActive');
-            }*/
+            function amegakureRiskCross() {
+                amegakurePlate.appendChild(amegakureDiv);
+                amegakureDiv.classList.toggle('amegakureRiskActive');
+            }
 
         amegakureContainer.addEventListener('click', () => {
+            amegakureRiskCross();
+        })
 
             //função de toggle simples reutilizável
-            alternarClasse(amegakureRisco, 'amegakureRiskActive');
-        });
+        //     alternarClasse(amegakureRisco, 'amegakureRiskActive');
+        // });
 
         // Fim do Amegakure
 

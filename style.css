@@ -711,12 +711,7 @@
             left: 6.5rem;
         }
 
-        /* Definição de estado */
-        .amegakure-risk {
-            display: none;
-        }
-
-        /* Definição da ação ativada no js */
+        /* classe ativada no js */
         .amegakureRiskActive {
             height: .5rem;
             width: 1rem;
@@ -726,7 +721,6 @@
             position: relative;
             top: -2.4rem;
             left: 4rem;
-            /* transform: scaleX(1200%); */
             transform-origin: left;
             animation: crossing 500ms linear 50ms normal forwards;
         }
