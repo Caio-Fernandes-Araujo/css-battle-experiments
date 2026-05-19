@@ -166,8 +166,20 @@
 
             function amegakureRiskCross() {
                 amegakurePlate.appendChild(amegakureDiv);
-                amegakureDiv.classList.toggle('amegakureRiskActive');
+                amegakureDiv.classList.add('amegakureRisk');
+                
+                if(!amegakureDiv.classList.contains('amegakureRiskAnimation')) {
+                    amegakureDiv.classList.remove('amegakureRiskAnimationReverse');
+                    amegakureDiv.classList.add('amegakureRiskAnimation');
+                } else {
+                    amegakureDiv.classList.remove('amegakureRiskAnimation');
+                    amegakureDiv.classList.add('amegakureRiskAnimationReverse');
+                    setTimeout(() => {
+                        amegakureDiv.classList.remove('amegakureRisk')
+                    }, 450);
+                }
             }
+  
 
         amegakureContainer.addEventListener('click', () => {
             amegakureRiskCross();

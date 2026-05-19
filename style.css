@@ -659,6 +659,12 @@
             align-items: center;
             transition: var(--transition-slow);
         }
+
+        .amegakure-background:hover {
+            background: var(--color-black);
+            border-color: var(--color-gray);
+        }
+
         .amegakure-hitai-ate {
             height: 12rem;
             aspect-ratio: 2/1;
@@ -712,7 +718,7 @@
         }
 
         /* classe ativada no js */
-        .amegakureRiskActive {
+        .amegakureRisk {
             height: .5rem;
             width: 1rem;
             display: block;
@@ -722,20 +728,38 @@
             top: -2.4rem;
             left: 4rem;
             transform-origin: left;
-            animation: crossing 500ms linear 50ms normal forwards;
         }
 
-        @keyframes crossing {
+        .amegakureRiskAnimation {
+            animation: riskCrossing 500ms linear normal forwards;
+        }
+
+        @keyframes riskCrossing {
+            from {
+                transform: scaleX(0%)
+            }
+            
             to {
                 transform: scaleX(1200%)
             }
         }
 
-
-        .amegakure-background:hover {
-        background: var(--color-black);
-        border-color: var(--color-gray);
+        .amegakureRiskAnimationReverse {
+            animation: riskCrossingReverse 500ms linear normal;
         }
+
+        @keyframes riskCrossingReverse {
+            from {
+                transform: scaleX(1200%)
+            }
+            
+            to {
+                transform: scaleX(0%)
+            }
+        }
+
+
+        
 
 
 
