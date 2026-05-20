@@ -172,6 +172,7 @@
 
                 riskIsAnimating = true;
 
+                amegakureContainer.classList.toggle('amegakureContainerActive');
                 amegakurePlate.appendChild(amegakureDiv);
                 amegakureDiv.classList.add('amegakureRisk');
                 
@@ -231,12 +232,28 @@
 
         const kuramaContainer = document.querySelector('.kurama-background');
         const kuramaOlhoVermelho = document.querySelector('.kurama-eye-red');
+        let eyeIsAnimating = false;
 
         function kuramaChangeColors() {
-                kuramaContainer.classList.toggle('kuramaContainerActive');
 
-                kuramaOlhoVermelho.classList.toggle('kuramaEyeActive');
-            }           
+                if(eyeIsAnimating) return;
+
+                eyeIsAnimating = true;
+                
+                if(!kuramaOlhoVermelho.classList.contains('kuramaEyeAnimation')) {
+                    kuramaContainer.classList.add('kuramaContainerActive');
+                    kuramaOlhoVermelho.classList.remove('kuramaEyeAnimationReverse');
+                    kuramaOlhoVermelho.classList.add('kuramaEyeAnimation');
+                } else {
+                    kuramaContainer.classList.remove('kuramaContainerActive');
+                    kuramaOlhoVermelho.classList.remove('kuramaEyeAnimation');
+                    kuramaOlhoVermelho.classList.add('kuramaEyeAnimationReverse');
+                }
+            };   
+            
+        kuramaOlhoVermelho.addEventListener('animationend', () => {
+                eyeIsAnimating = false;
+        });
 
         kuramaContainer.addEventListener('click', () => {
             kuramaChangeColors();         
