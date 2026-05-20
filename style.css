@@ -1063,6 +1063,12 @@
 
         }
 
+        /* classe usada no javascript */
+        .obitoContainerActive {
+            background-color: var(--color-dark-gray);
+            border-color: var(--color-black);
+        }
+
 
 
         .obito-mask-hole {
@@ -1071,9 +1077,16 @@
             background: #683a31;
             border-radius: 50%;
             overflow: hidden;
+            transition: var(--transition-slow);
             box-shadow: 0 0 10px 4px;
             z-index: 1;
         }
+
+        /* classe usada no javascript */
+        .obitoMaskHoleActive {
+            background-color: var(--color-dark-gray);
+        }
+
 
         .obito-white-eye {
             height: 210px;
@@ -1088,8 +1101,16 @@
             position: relative;
             top: 36px;
             overflow: hidden;
+            transition: var(--transition-slow);
             box-shadow: inset -6px 7px 8px 7px gray;
         }
+
+        /* classe usada no javascript */
+        .obitoWhiteEyeActive {
+            background-color: var(--color-gray);
+        }
+
+
 
         .obito-red-eye {
             width: 140px;
@@ -1100,8 +1121,15 @@
             justify-content: center;
             align-items: center;
             border-radius: 50%;
+            transition: var(--transition-slow);
             transform: skew(-7deg) translate(0px, 0px);
-            box-shadow: inset 0 0 10px 1px;
+            /* box-shadow: inset 0 0 10px 1px; */ /* box shadow removido para não afetar a transição suave do box-shadow que ativa via js */
+            
+        }
+
+        /* classe usada no javascript */
+        .obitoRedEyeActive {
+            box-shadow: 0 0 20px 13px var(--color-bright-red), inset 0 0 10px 1px;
         }
 
         .obito-black-eye-circle {

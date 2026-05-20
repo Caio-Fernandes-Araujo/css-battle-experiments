@@ -261,6 +261,24 @@
 
         // Fim do Kurama
 
+        // Início do Obito
+
+        const obitoContainer = document.querySelector('.obito-container');
+        const obitoFuroMascara = document.querySelector('.obito-mask-hole');
+        const obitoOlhoBranco = document.querySelector('.obito-white-eye');
+        const obitoOlhoVermelho = document.querySelector('.obito-red-eye');
+
+        function ObitoChangeColors() {
+            obitoContainer.classList.toggle('obitoContainerActive');
+            obitoFuroMascara.classList.toggle('obitoMaskHoleActive');
+            obitoOlhoBranco.classList.toggle('obitoWhiteEyeActive');
+            obitoOlhoVermelho.classList.toggle('obitoRedEyeActive');
+        }
+
+        obitoContainer.addEventListener('click', ObitoChangeColors);
+
+        // Fim do Obito
+
         // Início do One Piece
 
         // v3 do script do one piece com trava de cliques durante a animação
