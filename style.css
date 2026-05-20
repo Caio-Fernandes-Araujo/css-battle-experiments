@@ -22,6 +22,7 @@
             --color-purple: #5858c9;
             --color-dark-purple: #373794;
             --color-orange: #FF7518;
+            --color-dark-orange: #b95a1a;
             --color-yellow: #F9C96C;
             --color-golden-yellow: #F3AC3C;
             --color-red: #cc3225;
@@ -35,7 +36,8 @@
             --color-teal-green: #4FA07B;
             --color-moss-green: #868A64;
             --color-dark-moss-green: #5A6042;
-            --color-brown-color: #4E2B24;
+            --color-light-brown: #683a31;
+            --color-brown: #4E2B24;
             --color-soft-mint: #CAE5DC;
 
             /* Cores semânticas, de uso estrutural */
@@ -504,7 +506,7 @@
         .ryuk-eye-brown-circle {
             width: 2.9rem;
             aspect-ratio: 1;
-            background: var(--color-brown-color);
+            background: var(--color-brown);
             border-radius: 5rem;
             outline: .6rem solid var(--color-black);
             position: absolute;
@@ -841,16 +843,17 @@
 
         /* Fim do Kurama */
 
+        
 
         /* Início do Sharingan */
 
-        .sharingan-container {
+        /* .sharingan-container {
             display:flex;
             justify-content: center;
             align-items: center;
             border: .2rem solid var(--color-dark-red);
             box-sizing: border-box;
-            transition: var(--transition-slow);          /* Define o tempo de transição dos elementos com hover */
+            transition: var(--transition-slow);
 
         }
 
@@ -949,10 +952,132 @@
 
          .sharingan-container:hover .sharingan-red-circle {
             transform: rotate(500deg);
-        }
+        } */
 
         /* Fim do Sharingan */
 
+        /* Início do Obito */
+
+        .obito-container {
+            background-color: var(--color-dark-orange);
+            border-color: var(--color-dark-orange);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow:inset 0 0 15px 8px;
+        }
+
+        .obito-container::before {
+            content: "";
+            width: 320px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            outline: 1px solid black;
+            outline-offset: 60px;
+            position: absolute;
+            top: 40px;
+            left: -50px;
+
+        }
+
+        .obito-container::after {
+            content: "";
+            width: 300px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            outline: 1px solid black;
+            outline-offset: 60px;
+            position: absolute;
+            top: -128px;
+            left: -150px;
+
+        }
+
+
+
+        .obito-mask-hole {
+            width: 280px;
+            aspect-ratio: 1;
+            background: #683a31;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 10px 4px;
+            z-index: 1;
+        }
+
+        .obito-white-eye {
+            height: 207px;
+            width: 280px;
+            background: white;
+            outline: 3px solid var(--color-black);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 52% 156px 16% 124px;
+            transform: skew(7deg);
+            position: relative;
+            top: 36px;
+            overflow: hidden;
+            box-shadow: inset -6px 7px 8px 7px gray;
+        }
+
+        .obito-red-eye {
+            width: 145px;
+            aspect-ratio: 1;
+            background: red;
+            outline: 6px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transform: skew(-7deg) translate(0px, 0px);
+            box-shadow: inset 0 0 10px 1px;
+        }
+
+        .obito-black-eye-circle {
+            width: 26px;
+            aspect-ratio: 1;
+            background-color: var(--color-black);
+            outline: 3px solid var(--color-black);
+            outline-offset: 31px;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .obito-tomoe {
+            width: 20px;
+            aspect-ratio: 1;
+            background: var(--color-black);
+            border-radius: 0 25px 0px 0;
+            position: absolute;
+            top: 10px;
+        }
+        
+        .obito-tomoe::before {
+            content: "";
+            display: block;
+            width: 10px;
+            height: 20px;
+            background: red;
+            border-radius:0 20px 20px 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .obito-tomoe::after {
+            content: "";
+            display: block;
+            width: 20px;
+            aspect-ratio:1;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+        }
+
+        /* Fim do Obito */
 
         /* Início do Punisher */
 

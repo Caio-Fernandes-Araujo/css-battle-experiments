@@ -247,7 +247,6 @@
         // Início do One Piece
 
         // v3 do script do one piece com trava de cliques durante a animação
-        
         const onePieceContainer = document.querySelector('.one-piece-background');
         const onePieceDiv = document.createElement('div');
 
