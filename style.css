@@ -1065,7 +1065,7 @@
 
         /* classe usada no javascript */
         .obitoContainerActive {
-            background-color: var(--color-dark-gray);
+            background-color: var(--color-teal-gray);
             border-color: var(--color-black);
         }
 

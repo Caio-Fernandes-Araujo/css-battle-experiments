@@ -268,14 +268,14 @@
         const obitoOlhoBranco = document.querySelector('.obito-white-eye');
         const obitoOlhoVermelho = document.querySelector('.obito-red-eye');
 
-        function ObitoChangeColors() {
+        function obitoChangeColors() {
             obitoContainer.classList.toggle('obitoContainerActive');
             obitoFuroMascara.classList.toggle('obitoMaskHoleActive');
             obitoOlhoBranco.classList.toggle('obitoWhiteEyeActive');
             obitoOlhoVermelho.classList.toggle('obitoRedEyeActive');
         }
 
-        obitoContainer.addEventListener('click', ObitoChangeColors);
+        obitoContainer.addEventListener('click', obitoChangeColors);
 
         // Fim do Obito
 
