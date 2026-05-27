@@ -292,14 +292,15 @@
             
             hatIsAnimating = true;
 
-            onePieceContainer.classList.toggle('onePieceContainerActive');
             onePieceContainer.appendChild(onePieceDiv);
             onePieceDiv.classList.add('onePieceHat');
 
             if(!onePieceDiv.classList.contains('onePieceHatAnimation')) {
+                onePieceContainer.classList.add('onePieceContainerActive');
                 onePieceDiv.classList.remove('onePieceHatAnimationReverse');
                 onePieceDiv.classList.add('onePieceHatAnimation');
             } else {
+                onePieceContainer.classList.remove('onePieceContainerActive');
                 onePieceDiv.classList.remove('onePieceHatAnimation');
                 onePieceDiv.classList.add('onePieceHatAnimationReverse');
                 setTimeout(() => {
