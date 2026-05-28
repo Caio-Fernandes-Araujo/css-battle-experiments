@@ -323,9 +323,6 @@
         // Início do One Piece
 
         // v3 do script do one piece com trava de cliques durante a animação
-        
-
-
         const onePieceContainer = document.querySelector('.one-piece-background');
         const onePieceDiv = document.createElement('div');
 
@@ -361,7 +358,6 @@
         });
 
 
-        
         // v2 do script do chapéu finalizada
         /*const onePieceContainer = document.querySelector('.one-piece-background');
         const onePieceDiv = document.createElement('div');
@@ -563,3 +559,21 @@
             });
 
         // Fim do mosaic
+
+        // Início do monopoly
+
+        const monopolyContainer = document.querySelector('.monopoly-background');
+        const monopolyShapes = document.querySelectorAll('.js-monopoly');
+
+        function monopolyChangeColors() {
+            monopolyContainer.classList.toggle('monopolyContainerActive');
+            monopolyShapes.forEach(el => {
+                el.classList.toggle('monopolyShapesActive');
+            })
+        }
+
+        monopolyContainer.addEventListener('click', () => {
+            monopolyChangeColors();
+        })
+
+        // Fim do monopoly
