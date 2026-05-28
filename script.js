@@ -104,6 +104,47 @@
 
         // Fim da Lógica da troca de Seções
 
+        // Inicio da lógica de criar um botao dinamicamente e ligar/desligar o cursor customizado por ele (para teste)
+
+        // criar o botao
+        /*const menuList = document.querySelector('.menu-list-container');
+        const btnTeste = document.createElement('li');
+        const aElement = document.createElement('a');
+
+        menuList.appendChild(btnTeste);
+        btnTeste.classList.add('btn-container')
+        btnTeste.appendChild(aElement);
+        aElement.textContent = "Customizar Cursor";
+        aElement.href = "#";
+        
+        // customizar o cursor
+        const bodyElement = document.querySelector('body');
+        const cursorDivElement = document.createElement('div');
+        bodyElement.appendChild(cursorDivElement);
+
+        function estilizarCursor() {
+
+            cursorDivElement.classList.toggle('cursorCustomized');
+
+            if(cursorDivElement.classList.contains('cursorCustomized')) {
+                bodyElement.style.cursor = "none";
+            } else {
+                bodyElement.style.cursor = "default";
+            }
+    
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            cursorDivElement.style.top = e.clientY + "px";
+            cursorDivElement.style.left = e.clientX + "px";
+            
+        })
+
+        btnTeste.addEventListener('click', () => {
+            estilizarCursor();
+        })*/
+
+        // Fim da lógica de criar um botao dinamicamente e ligar/desligar o cursor customizado por ele (para teste)
         
         //Função de toggle simples reutilizável  
         function alternarClasse(elemento, classe) {
@@ -282,6 +323,9 @@
         // Início do One Piece
 
         // v3 do script do one piece com trava de cliques durante a animação
+        
+
+
         const onePieceContainer = document.querySelector('.one-piece-background');
         const onePieceDiv = document.createElement('div');
 
@@ -292,14 +336,15 @@
             
             hatIsAnimating = true;
 
-            onePieceContainer.classList.toggle('onePieceContainerActive');
             onePieceContainer.appendChild(onePieceDiv);
             onePieceDiv.classList.add('onePieceHat');
 
             if(!onePieceDiv.classList.contains('onePieceHatAnimation')) {
+                onePieceContainer.classList.add('onePieceContainerActive');
                 onePieceDiv.classList.remove('onePieceHatAnimationReverse');
                 onePieceDiv.classList.add('onePieceHatAnimation');
             } else {
+                onePieceContainer.classList.remove('onePieceContainerActive');
                 onePieceDiv.classList.remove('onePieceHatAnimation');
                 onePieceDiv.classList.add('onePieceHatAnimationReverse');
                 setTimeout(() => {
@@ -315,6 +360,8 @@
             addHat();
         });
 
+
+        
         // v2 do script do chapéu finalizada
         /*const onePieceContainer = document.querySelector('.one-piece-background');
         const onePieceDiv = document.createElement('div');

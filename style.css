@@ -21,10 +21,12 @@
             --color-pink: #F459E3;
             --color-purple: #5858c9;
             --color-dark-purple: #373794;
+            --color-light-orange: #E38F66;
             --color-orange: #FF7518;
             --color-dark-orange: #b95a1a;
             --color-yellow: #F9C96C;
             --color-golden-yellow: #F3AC3C;
+            --color-bege: #FFFBDA;
             --color-bright-red: #ff0000;
             --color-red: #cc3225;
             --color-dark-red: #b8291c;
@@ -233,12 +235,30 @@
             transition: var(--transition-slow);
             position: relative;
             }
+
         }
-        
 
         .card-container:hover {
             transform: scale(1.1);
+            cursor: pointer;
         }
+        
+        
+
+        /* classe usada no javascript (teste) */
+        /* .cursorCustomized {
+            width: 18px;
+            aspect-ratio: 1;
+            background-color: var(--color-paleturquoise);
+            border: 1px solid white;
+            box-sizing: border-box;
+            border-radius: 50%;
+            position: fixed;
+            z-index: 10;
+            box-shadow: 0 0 10px var(--color-paleturquoise), 0 0 20px var(--color-paleturquoise);
+        } */
+
+        
 
 
         @media (max-width: 420px) {
@@ -1042,7 +1062,7 @@
             width: 320px;
             aspect-ratio: 1;
             border-radius: 50%;
-            outline: 1px solid black;
+            outline: 5px solid var(--color-dark-gray);
             outline-offset: 60px;
             position: absolute;
             top: 40px;
@@ -1055,7 +1075,7 @@
             width: 300px;
             aspect-ratio: 1;
             border-radius: 50%;
-            outline: 1px solid black;
+            outline: 5px solid var(--color-dark-gray);
             outline-offset: 60px;
             position: absolute;
             top: -128px;
@@ -1078,7 +1098,7 @@
             border-radius: 50%;
             overflow: hidden;
             transition: var(--transition-slow);
-            box-shadow: 0 0 10px 4px;
+            box-shadow: inset 0 1px 10px 4px var(--color-gray), 0 0 10px 4px;
             z-index: 1;
         }
 
@@ -1892,7 +1912,8 @@
 
         
         .monopoly-background {
-            background-color: #E38F66;
+            background-color: var(--color-light-orange);
+            border-color: var(--color-bege);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -1902,7 +1923,7 @@
         .monopoly-hat {
             width: 120px;
             height: 90px;
-            background-color: #FFFBDA;
+            background-color: var(--color-bege);
             border-radius: 60px 60px 0 0;
             position: relative;
         }
@@ -1912,7 +1933,7 @@
             display:block;
             width: 180px;
             height: 20px;
-            background-color: #FFFBDA;
+            background-color: var(--color-bege);
             border-radius: 20px;
             position: relative;
             top: 90px;
@@ -1939,14 +1960,14 @@
         .monopoly-eye-left {
             width: 20px;
             aspect-ratio: 1;
-            background-color: #FFFBDA;
+            background-color: var(--color-bege);
             border-radius: 50%;
         }
 
         .monopoly-eye-right {
             width: 40px;
             aspect-ratio: 1;
-            background-color: #FFFBDA;
+            background-color: var(--color-bege);
             border-radius: 50%;
             transform: translate(10px);
             display:flex;
@@ -1959,7 +1980,7 @@
             display:block;
             width: 20px;
             aspect-ratio: 1;
-            background-color: #E38F66;
+            background-color: var(--color-light-orange);
             border-radius: 50%;
         }
 
@@ -1974,7 +1995,7 @@
         .monopoly-mustache {
             width: 40px;
             height: 40px;
-            background-color: #FFFBDA;
+            background-color: var(--color-bege);
         }
 
         .monopoly-mustache-left {
