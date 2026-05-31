@@ -272,6 +272,7 @@
         // Início do Kurama
 
         const kuramaContainer = document.querySelector('.kurama-background');
+        const kuramaContornoOlho = document.querySelector('.kurama-eye-contour');
         const kuramaOlhoVermelho = document.querySelector('.kurama-eye-red');
         let eyeIsAnimating = false;
 
@@ -283,10 +284,12 @@
                 
                 if(!kuramaOlhoVermelho.classList.contains('kuramaEyeAnimation')) {
                     kuramaContainer.classList.add('kuramaContainerActive');
+                    kuramaContornoOlho.classList.add('kuramaEyeContourActive');
                     kuramaOlhoVermelho.classList.remove('kuramaEyeAnimationReverse');
                     kuramaOlhoVermelho.classList.add('kuramaEyeAnimation');
                 } else {
                     kuramaContainer.classList.remove('kuramaContainerActive');
+                    kuramaContornoOlho.classList.remove('kuramaEyeContourActive');
                     kuramaOlhoVermelho.classList.remove('kuramaEyeAnimation');
                     kuramaOlhoVermelho.classList.add('kuramaEyeAnimationReverse');
                 }
@@ -308,6 +311,9 @@
         const obitoFuroMascara = document.querySelector('.obito-mask-hole');
         const obitoOlhoBranco = document.querySelector('.obito-white-eye');
         const obitoOlhoVermelho = document.querySelector('.obito-red-eye');
+
+        // ajuste na largura do container via js devido ao overflow: hidden diminuir a largura de seu container
+        obitoContainer.style.minWidth = "400px";
 
         function obitoChangeColors() {
             obitoContainer.classList.toggle('obitoContainerActive');

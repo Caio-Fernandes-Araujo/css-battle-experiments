@@ -808,6 +808,7 @@
             border-radius: 0 15rem 0 15rem;
             transform: skew(15deg); /* O skew irá afetar todas as classes filhas diretas e inderetas */
             transition: var(--transition-super-slow); /* Esse transition será ativado no efeito hover */
+            box-shadow: inset 0 1px 10px 4px var(--color-gray), 0 0 10px 4px;
         }
 
         .kurama-eye-white {          /* Essa classe está com o skew herdado de seu pai */
@@ -849,7 +850,7 @@
         }
 
             .kurama-background:hover .kurama-eye-contour {
-                box-shadow: 0 0 2rem .5rem var(--color-red);
+                box-shadow: inset 0 1px 10px 4px var(--color-red), 0 0 10px 4px;
             }
 
 
@@ -861,10 +862,10 @@
             box-shadow: inset 0 0 1rem .3rem var(--color-red);
         }
 
-        /* .kuramaEyeActive {
-            background: var(--color-red);
-            box-shadow: 0 0 2.5rem 1rem var(--color-red);
-        } */
+        /* foi colocado box-shadow "black" propositalmente, para o contorno sumir com o fundo preto quando não estiver hoverado */
+        .kuramaEyeContourActive {
+            box-shadow: inset 0 1px 10px 4px var(--color-black);
+        }
 
         .kuramaEyeAnimation {
             animation: kurama 2s linear forwards;
@@ -1057,6 +1058,7 @@
             box-shadow:inset 0 0 15px 8px;
         }
 
+        /* O ::before e o ::after abaixo simulam os vértices de sua máscara */
         .obito-container::before {
             content: "";
             width: 320px;
@@ -2031,6 +2033,7 @@
             box-shadow:0 0 1rem .2rem var(--color-bright-blue);
         }
 
+        /* o ::after e o ::before não são capturados via JS iguais seus elementos de origem, então foi necessário estilizá-los separadamente na presença da classe ativada no js */
         .monopolyShapesActive.monopoly-hat::after {
             background-color: var(--color-light-blue);
             box-shadow:0 0 1rem .2rem var(--color-bright-blue);
