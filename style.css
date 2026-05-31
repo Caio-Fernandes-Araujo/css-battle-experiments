@@ -479,12 +479,7 @@
             position: relative;
         }
 
-        :where(.ryuk-background:hover .ryuk-eye-contour) {
-            box-shadow: 0 0 1rem .2rem var(--color-dark-moss-green);
-        }
-
         
-
         /* classe usada no Javascript */
         .ryukEyeContourNegative {
             background: var(--color-white);
@@ -524,6 +519,14 @@
             background: #79759B;
         }
 
+        .ryuk-background:hover :where(.ryuk-eye-dark-green-circle, .ryuk-eye-light-green-circle ) {
+            background: var(--color-black);
+        }
+
+        .ryukBackgroundNegative:hover :is(.ryukEyeDarkGreenNegative, .ryukEyeLightGreenNegative) {
+            background: var(--color-black);
+        }
+
         .ryuk-eye-brown-circle {
             width: 2.9rem;
             aspect-ratio: 1;
@@ -549,7 +552,7 @@
         }
 
         /* Foi usado um hover na classe JS para sobrescrever o hover da classe normal */
-        .ryuk-background:hover .ryukEyeBrownNegative {
+        .ryukBackgroundNegative:hover .ryukEyeBrownNegative {
             background: #B1D4DB;
             box-shadow: 0 0 2rem 1.2rem var(--color-bright-blue);
         }
