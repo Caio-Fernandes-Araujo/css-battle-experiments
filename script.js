@@ -413,12 +413,14 @@
 
         akazaContainer.style.minWidth = "400px";
 
-        styleElement.textContent = `
-        .akaza-background {
+        styleElement.textContent = 
+        
+        `.akaza-background {
             background: var(--color-gray);
-            border-color: var(--color-dark-blue);
+            border-color: var(--color-bright-blue);
             box-shadow: inset 0 25px 50px 3px var(--color-dark-gray);
             overflow: hidden;
+            transition: var(--transition-slow);
         }
 
         .akaza-stripe {
@@ -432,7 +434,9 @@
             align-items: center;
             position: absolute;
             top: -380px;
-            left: 45px;      
+            left: 45px; 
+            transition: var(--transition-slow);
+            box-shadow: inset 0 0 0 2px var(--color-bright-blue), 0 0 0 2px var(--color-bright-blue);     
         }
 
         .akaza-stripe::before {
@@ -444,6 +448,8 @@
             box-sizing: border-box;
             border-radius: 50%;
             position: absolute;
+            transition: var(--transition-slow);
+            box-shadow: inset 0 0 0 2px var(--color-bright-blue), 0 0 0 2px var(--color-bright-blue);
         }
 
         .akaza-stripe::after {
@@ -458,6 +464,8 @@
             justify-content: center;
             align-items: center;
             position: absolute;
+            transition: var(--transition-slow);
+            box-shadow: inset 0 0 0 2px var(--color-bright-blue), 0 0 0 2px var(--color-bright-blue);
         }
 
         .akaza-eye-blue {
@@ -472,7 +480,8 @@
             overflow: hidden;
             transform: skew(-25deg) rotate(-5deg);  /*o skew irá afetar todos os filhos diretos e indiretos */
             border-radius: 70% 0px 30px 0px / 70% 0px 90px 0px;
-            box-shadow: inset 25px 10px 25px 3px,
+            transition: var(--transition-slow);
+            box-shadow: inset 0px 10px 25px 3px, /*sombreamento na parte superior do olho azul */
             5px -10px 0 20px var(--color-pink),  /*contorno rosa do olho */
             5px -10px 0 23px black; /* borda preta em volta do contorno rosa, com um scale 3px maior que o scale do contorno rosa */ 
         }
@@ -485,19 +494,61 @@
             justify-content:center;
             align-items: center;
             border-radius: 50%;
-            transform: skew(25deg) rotate(5deg) translate(-10px,-15px); /*o skew negativo é para anular o skew herdado da classe '.akaza-eye-blue' */  
-            box-shadow: inset 0 0 5px 10px white, 
-            0 100px 30px 50px #AFEEEE; /*este box - shadow está dando o efeito clareado na parte azul inferior do olho*/  
             outline: 5px solid black;
+            transform: skew(25deg) rotate(5deg) translate(-10px,-15px); /*o skew negativo é para anular o skew herdado da classe '.akaza-eye-blue' */  
+            transition: var(--transition-slow);
+            box-shadow: inset 0 0 5px 10px white, /*contorno interno do olho amarelo */
+            30px 100px 30px 30px #AFEEEE; /*efeito de luz na parte inferior do olho azul */
         }
 
         .akaza-eye-yellow::before {
             content: "参";
-            font-size: 120px;
+            font-size: 110px;
             font-weight: bold;
             color: #000;
-            text-shadow:0 0 5px hotpink;
+            text-shadow:0 0 5px var(--color-red);
+        }
+            
+        .akazaContainerActive {
+            background-color: var(--color-teal-gray);
+            border-color: var(--color-red);
+        }
+
+        .akazaStripeActive {
+            border-color: var(--color-dark-gray);
+            box-shadow: inset 0 0 0 1px var(--color-red), 0 0 0 1px var(--color-red);
+        }
+
+        .akazaStripeActive.akaza-stripe::before, .akazaStripeActive.akaza-stripe::after {
+            border-color: var(--color-dark-gray);
+            box-shadow: inset 0 0 0 1px var(--color-red), 0 0 0 1px var(--color-red);
+        }
+
+        .akazaEyeBlueActive {
+            background-color: var(--color-dark-blue);
+            box-shadow: inset 0px 10px 25px 3px, /*sombreamento na parte superior do olho azul */
+            5px -10px 0 20px var(--color-dark-pink),  /*contorno rosa do olho */
+            5px -10px 0 23px black; /* borda preta em volta do contorno rosa, com um scale 3px maior que o scale do contorno rosa */
+        }
+
+        .akazaEyeYellowActive {
+            box-shadow: inset 0 0 5px 10px white, /*contorno interno do olho amarelo */
+            30px 220px 30px 30px #AFEEEE, /*efeito de luz na parte inferior do olho azul, inserir o mesmo valor da classe original, mas com um posicionamento mais abaixo, cria um efeito de luz se deslocando gradativamente */
+            0 0 25px 10px var(--color-yellow);
         }`;
+
+        function akazaChangeColors() {
+            akazaContainer.classList.toggle('akazaContainerActive');
+            akazaListra.classList.toggle('akazaStripeActive');
+            akazaOlhoAzul.classList.toggle('akazaEyeBlueActive');
+            akazaOlhoAmarelo.classList.toggle('akazaEyeYellowActive');
+        }
+
+        akazaContainer.addEventListener('click', () => {
+            akazaChangeColors();
+        });
+
+        
 
         // v1 da inserção de regras css dinamicamente, mais controle porém mais verbosa
         // styleElement.sheet.insertRule(
