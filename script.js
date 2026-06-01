@@ -363,20 +363,113 @@
             addHat();
         });
 
-        //Início do Akaza
+        //Início do Akaza (html e css recriado 100% dinamicamente com js para treino)
 
-        const akazaArticle = document.createElement('article');
-        const akazaDiv1 = document.createElement('div');
-        const akazaDiv2 = document.createElement('div');
+        const styleElement = document.createElement('style');
+        const akazaContainer = document.createElement('article');
+        const akazaOlhoAzul = document.createElement('div');
+        const akazaOlhoAmarelo = document.createElement('div');
 
-        akazaArticle.classList.add('card-container');
-        akazaArticle.classList.add('akaza-background');
-        akazaDiv1.classList.add('akaza-eye-blue');
-        akazaDiv2.classList.add('akaza-eye-yellow');
+        document.body.prepend(styleElement);
+        secaoAnime.appendChild(akazaContainer); 
+        akazaContainer.appendChild(akazaOlhoAzul);
+        akazaOlhoAzul.appendChild(akazaOlhoAmarelo);
 
-        secaoAnime.appendChild(akazaArticle);
-        akazaArticle.appendChild(akazaDiv1);
-        akazaDiv1.appendChild(akazaDiv2);
+        akazaContainer.classList.add('card-container');
+        akazaContainer.classList.add('akaza-background');
+        akazaOlhoAzul.classList.add('akaza-eye-blue');
+        akazaOlhoAmarelo.classList.add('akaza-eye-yellow');
+
+        styleElement.textContent = `
+        .akaza-background {
+            background-color: var(--color-gray);
+        }
+
+        .akaza-eye-blue {
+            height: 150px;
+            width: 245px;
+            background-color: var(--color-bright-blue);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 70px 65px;
+            outline: 5px solid black;
+            overflow: hidden;
+            transform: skew(-25deg) rotate(-5deg);  /*o skew irá afetar todos os filhos diretos e indiretos */
+            border-radius: 70% 0px 30px 0px / 70% 0px 90px 0px;
+            box-shadow: 5px -10px 0 20px var(--color-pink),  /*contorno rosa do olho */
+            5px -10px 0 23px black; /* borda preta em volta do contorno rosa, com um scale 3px maior que o scale do contorno rosa */ 
+        }
+
+        .akaza-eye-yellow {
+            width: 170px;
+            aspect-ratio: 1;
+            background: linear-gradient(to bottom, #F3AC3C 45%, #F9C96C 55%);
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            border-radius: 50%;
+            transform: skew(25deg) rotate(5deg) translate(-10px,-15px); /*o skew negativo é para anular o skew herdado da classe '.akaza-eye-blue' */  
+            box-shadow: inset 0 0 5px 10px white, 
+            0 100px 30px 50px #AFEEEE; /*este box - shadow está dando o efeito clareado na parte azul inferior do olho*/  
+            outline: 5px solid black;
+        }
+
+        .akaza-eye-yellow::before {
+            content: "参";
+            font-size: 130px;
+            font-weight: bold;
+            color: #000;
+            text-shadow:0 0 5px hotpink;
+        }`;
+
+        // v1 da inserção de regras css dinamicamente, mais controle porém mais verbosa
+        // styleElement.sheet.insertRule(
+        //     `.akaza-background {
+        //     background-color: var(--color-gray);
+        //     }`, styleElement.sheet.cssRules.length);
+
+        // styleElement.sheet.insertRule(
+        //     `.akaza-eye-blue {
+        //     height: 150px;
+        //     width: 245px;
+        //     background-color: var(--color-bright-blue);
+        //     display: flex;
+        //     justify-content: center;
+        //     align-items: center;
+        //     margin: 70px 65px;
+        //     outline: 5px solid black;
+        //     overflow: hidden;
+        //     transform: skew(-25deg) rotate(-5deg);  /*o skew irá afetar todos os filhos diretos e indiretos */
+        //     border-radius: 70% 0px 30px 0px / 70% 0px 90px 0px;
+        //     box-shadow: 5px -10px 0 20px var(--color-pink),  /*contorno rosa do olho */
+        //     5px -10px 0 23px black; /* borda preta em volta do contorno rosa, com um scale 3px maior que o scale do contorno rosa */ 
+        // }`, styleElement.sheet.cssRules.length);
+
+        // styleElement.sheet.insertRule(`
+        //     .akaza-eye-yellow {
+        //     width: 170px;
+        //     aspect-ratio: 1;
+        //     background: linear-gradient(to bottom, #F3AC3C 45%, #F9C96C 55%);
+        //     display: flex;
+        //     justify-content:center;
+        //     align-items: center;
+        //     border-radius: 50%;
+        //     transform: skew(25deg) rotate(5deg) translate(-10px,-15px); /*o skew negativo é para anular o skew herdado da classe '.akaza-eye-blue' */  
+        //     box-shadow: inset 0 0 5px 10px white, 
+        //     0 100px 30px 50px #AFEEEE; /*este box - shadow está dando o efeito clareado na parte azul inferior do olho*/  
+        //     outline: 5px solid black;
+        // }`, styleElement.sheet.cssRules.length);
+
+        // styleElement.sheet.insertRule(
+        //     `.akaza-eye-yellow::before {
+        //     content: "参";
+        //     font-size: 130px;
+        //     font-weight: bold;
+        //     color: #000;
+        //     text-shadow:0 0 5px hotpink;
+        // }`, styleElement.sheet.cssRules.length);
+            
 
 
         //Fim do akaza
