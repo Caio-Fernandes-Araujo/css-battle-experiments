@@ -363,6 +363,24 @@
             addHat();
         });
 
+        //Início do Akaza
+
+        const akazaArticle = document.createElement('article');
+        const akazaDiv1 = document.createElement('div');
+        const akazaDiv2 = document.createElement('div');
+
+        akazaArticle.classList.add('card-container');
+        akazaArticle.classList.add('akaza-background');
+        akazaDiv1.classList.add('akaza-eye-blue');
+        akazaDiv2.classList.add('akaza-eye-yellow');
+
+        secaoAnime.appendChild(akazaArticle);
+        akazaArticle.appendChild(akazaDiv1);
+        akazaDiv1.appendChild(akazaDiv2);
+
+
+        //Fim do akaza
+
 
         // v2 do script do chapéu finalizada
         /*const onePieceContainer = document.querySelector('.one-piece-background');
