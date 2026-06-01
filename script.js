@@ -363,26 +363,101 @@
             addHat();
         });
 
+        // v2 do script do chapéu finalizada
+        /*const onePieceContainer = document.querySelector('.one-piece-background');
+        const onePieceDiv = document.createElement('div');
+
+        function addHat() {
+            onePieceContainer.classList.toggle('onePieceContainerActive');
+            onePieceContainer.appendChild(onePieceDiv);
+            onePieceDiv.classList.add('onePieceHat');
+
+            if(!onePieceDiv.classList.contains('onePieceHatAnimation')) {
+                onePieceDiv.classList.remove('onePieceHatAnimationReverse');
+                onePieceDiv.classList.add('onePieceHatAnimation');
+            } else {
+                onePieceDiv.classList.remove('onePieceHatAnimation');
+                onePieceDiv.classList.add('onePieceHatAnimationReverse');
+                setTimeout(() => {
+                   onePieceDiv.classList.remove('onePieceHat')
+                }, 1750);
+            }
+        }
+
+        onePieceContainer.addEventListener('click', () =>{
+            addHat();
+        })*/
+
+        // Fim do One Piece
+
         //Início do Akaza (html e css recriado 100% dinamicamente com js para treino)
 
+        // v2 da inserção de regras css dinamicamente, menos verbosa porém menos controle
         const styleElement = document.createElement('style');
         const akazaContainer = document.createElement('article');
         const akazaOlhoAzul = document.createElement('div');
         const akazaOlhoAmarelo = document.createElement('div');
+        const akazaListra = document.createElement('div');
 
         document.body.prepend(styleElement);
         secaoAnime.appendChild(akazaContainer); 
+        akazaContainer.prepend(akazaListra);
         akazaContainer.appendChild(akazaOlhoAzul);
         akazaOlhoAzul.appendChild(akazaOlhoAmarelo);
 
         akazaContainer.classList.add('card-container');
         akazaContainer.classList.add('akaza-background');
+        akazaListra.classList.add('akaza-stripe');
         akazaOlhoAzul.classList.add('akaza-eye-blue');
         akazaOlhoAmarelo.classList.add('akaza-eye-yellow');
 
+        akazaContainer.style.minWidth = "400px";
+
         styleElement.textContent = `
         .akaza-background {
-            background-color: var(--color-gray);
+            background: var(--color-gray);
+            border-color: var(--color-dark-blue);
+            box-shadow: inset 0 25px 50px 3px var(--color-dark-gray);
+            overflow: hidden;
+        }
+
+        .akaza-stripe {
+            width: 1000px;
+            aspect-ratio: 1;
+            border: 60px solid var(--color-dark-blue);
+            box-sizing: border-box;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: -380px;
+            left: 45px;      
+        }
+
+        .akaza-stripe::before {
+            content: "";
+            display: block;
+            width: 800px;
+            aspect-ratio: 1;
+            border: 60px solid var(--color-dark-blue);
+            box-sizing: border-box;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .akaza-stripe::after {
+            content: "";
+            display: block;
+            width: 600px;
+            aspect-ratio: 1;
+            border: 60px solid var(--color-dark-blue);
+            box-sizing: border-box;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
         }
 
         .akaza-eye-blue {
@@ -397,12 +472,13 @@
             overflow: hidden;
             transform: skew(-25deg) rotate(-5deg);  /*o skew irá afetar todos os filhos diretos e indiretos */
             border-radius: 70% 0px 30px 0px / 70% 0px 90px 0px;
-            box-shadow: 5px -10px 0 20px var(--color-pink),  /*contorno rosa do olho */
+            box-shadow: inset 25px 10px 25px 3px,
+            5px -10px 0 20px var(--color-pink),  /*contorno rosa do olho */
             5px -10px 0 23px black; /* borda preta em volta do contorno rosa, com um scale 3px maior que o scale do contorno rosa */ 
         }
 
         .akaza-eye-yellow {
-            width: 170px;
+            width: 160px;
             aspect-ratio: 1;
             background: linear-gradient(to bottom, #F3AC3C 45%, #F9C96C 55%);
             display: flex;
@@ -417,7 +493,7 @@
 
         .akaza-eye-yellow::before {
             content: "参";
-            font-size: 130px;
+            font-size: 120px;
             font-weight: bold;
             color: #000;
             text-shadow:0 0 5px hotpink;
@@ -469,38 +545,9 @@
         //     color: #000;
         //     text-shadow:0 0 5px hotpink;
         // }`, styleElement.sheet.cssRules.length);
-            
-
 
         //Fim do akaza
 
-
-        // v2 do script do chapéu finalizada
-        /*const onePieceContainer = document.querySelector('.one-piece-background');
-        const onePieceDiv = document.createElement('div');
-
-        function addHat() {
-            onePieceContainer.classList.toggle('onePieceContainerActive');
-            onePieceContainer.appendChild(onePieceDiv);
-            onePieceDiv.classList.add('onePieceHat');
-
-            if(!onePieceDiv.classList.contains('onePieceHatAnimation')) {
-                onePieceDiv.classList.remove('onePieceHatAnimationReverse');
-                onePieceDiv.classList.add('onePieceHatAnimation');
-            } else {
-                onePieceDiv.classList.remove('onePieceHatAnimation');
-                onePieceDiv.classList.add('onePieceHatAnimationReverse');
-                setTimeout(() => {
-                   onePieceDiv.classList.remove('onePieceHat')
-                }, 1750);
-            }
-        }
-
-        onePieceContainer.addEventListener('click', () =>{
-            addHat();
-        })*/
-
-        // Fim do One Piece
 
         // Início do Punisher
 
