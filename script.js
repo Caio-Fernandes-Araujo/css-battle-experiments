@@ -394,16 +394,21 @@
 
         // v2 da inserção de regras css dinamicamente, menos verbosa porém menos controle
         const styleElement = document.createElement('style');
+        const linkElement = document.createElement('link');
         const akazaContainer = document.createElement('article');
         const akazaOlhoAzul = document.createElement('div');
         const akazaOlhoAmarelo = document.createElement('div');
         const akazaListra = document.createElement('div');
 
+        document.head.appendChild(linkElement);
         document.body.prepend(styleElement);
         secaoAnime.appendChild(akazaContainer); 
         akazaContainer.prepend(akazaListra);
         akazaContainer.appendChild(akazaOlhoAzul);
         akazaOlhoAzul.appendChild(akazaOlhoAmarelo);
+
+        linkElement.href = "https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap";
+        linkElement.rel = "stylesheet";
 
         akazaContainer.classList.add('card-container');
         akazaContainer.classList.add('akaza-background');
@@ -492,7 +497,7 @@
             aspect-ratio: 1;
             background: linear-gradient(to bottom, #F3AC3C 45%, #F9C96C 55%);
             display: flex;
-            justify-content:center;
+            justify-content: center;
             align-items: center;
             border-radius: 50%;
             outline: 5px solid black;
@@ -504,8 +509,13 @@
 
         .akaza-eye-yellow::before {
             content: "参";
-            font-size: 110px;
-            font-weight: bold;
+            display: block;
+            position: absolute;
+            top: -25px;
+            left: 15px;
+            font-family: 'Yuji Syuku', serif;
+            font-size: 135px;
+            font-weight: normal;
             color: #000;
             text-shadow:0 0 5px var(--color-red);
         }
