@@ -393,6 +393,7 @@
         //Início do Akaza (html e css recriado 100% dinamicamente com js para treino)
 
         // v2 da inserção de regras css dinamicamente, menos verbosa porém menos controle
+        // v2 da inserção de regras css dinamicamente, menos verbosa porém menos controle
         const styleElement = document.createElement('style');
         const linkElement = document.createElement('link');
         const akazaContainer = document.createElement('article');
@@ -476,7 +477,11 @@
         .akaza-eye-blue {
             height: 150px;
             width: 245px;
-            background-color: var(--color-bright-blue);
+            background: repeating-conic-gradient(
+                from 0deg,
+                black 0deg 2deg,
+                var(--color-bright-blue) 2deg 28deg
+            );
             display: flex;
             justify-content: center;
             align-items: center;
@@ -484,7 +489,7 @@
             outline: 5px solid black;
             overflow: hidden;
             transform: skew(-25deg) rotate(-5deg);  /*o skew irá afetar todos os filhos diretos e indiretos */
-            border-radius: 70% 0px 30px 0px / 70% 0px 90px 0px;
+            border-radius: 70% 0px 30px 2px / 70% 0px 90px 2px;
             transition: var(--transition-slow);
             box-shadow: inset 0px 10px 25px 3px, /*sombreamento na parte superior do olho azul */
             5px -10px 0 20px var(--color-pink),  /*contorno rosa do olho */
@@ -503,8 +508,7 @@
             outline: 5px solid black;
             transform: skew(25deg) rotate(5deg) translate(-10px,-15px); /*o skew negativo é para anular o skew herdado da classe '.akaza-eye-blue' */  
             transition: var(--transition-slow);
-            box-shadow: inset 0 0 5px 10px white, /*contorno interno do olho amarelo */
-            30px 100px 30px 30px #AFEEEE; /*efeito de luz na parte inferior do olho azul */
+            box-shadow: inset 0 0 5px 10px white;
         }
 
         .akaza-eye-yellow::before {
@@ -537,7 +541,6 @@
         }
 
         .akazaEyeBlueActive {
-            background-color: var(--color-dark-blue);
             box-shadow: inset 0px 10px 25px 3px, /*sombreamento na parte superior do olho azul */
             5px -10px 0 20px var(--color-dark-pink),  /*contorno rosa do olho */
             5px -10px 0 26px black, /* borda preta em volta do contorno rosa, com um scale 6px maior que o scale do contorno rosa */
@@ -546,8 +549,9 @@
 
         .akazaEyeYellowActive {
             box-shadow: inset 0 0 5px 10px white, /*contorno interno do olho amarelo */
-            30px 220px 30px 30px #AFEEEE, /*efeito de luz na parte inferior do olho azul, inserir o mesmo valor da classe original, mas com um posicionamento mais abaixo, cria um efeito de luz se deslocando gradativamente */
             0 0 25px 10px var(--color-yellow); /*contorno externo do olho amarelo */
+            // 30px 220px 30px 30px #AFEEEE, /*efeito de luz na parte inferior do olho azul, inserir o mesmo valor da classe original, mas com um posicionamento mais abaixo, cria um efeito de luz se deslocando gradativamente */
+
         }`;
 
         function akazaChangeColors() {
