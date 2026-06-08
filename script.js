@@ -411,8 +411,7 @@
         linkElement.href = "https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap";
         linkElement.rel = "stylesheet";
 
-        akazaContainer.classList.add('card-container');
-        akazaContainer.classList.add('akaza-background');
+        akazaContainer.classList.add('card-container','akaza-background');
         akazaListra.classList.add('akaza-stripe');
         akazaOlhoAzul.classList.add('akaza-eye-blue');
         akazaOlhoAmarelo.classList.add('akaza-eye-yellow');
@@ -554,6 +553,8 @@
 
         }`;
 
+
+
         function akazaChangeColors() {
             akazaContainer.classList.toggle('akazaContainerActive');
             akazaListra.classList.toggle('akazaStripeActive');
@@ -615,6 +616,139 @@
         // }`, styleElement.sheet.cssRules.length);
 
         //Fim do akaza
+        
+
+        // Início do Kokushibo (100% dinânico para treino)
+
+        const kokushiboContainer = document.createElement('article');
+        const kokushiboMarca = document.createElement('div');
+        const kokushiboOlhoVermelhoTopo = document.createElement('div');
+        const kokushiboOlhoVermelhoMeio = document.createElement('div');
+        const kokushiboOlhoVermelhoBaixo = document.createElement('div');
+        const kokushiboOlhoAmareloTopo = document.createElement('div');
+        const kokushiboOlhoAmareloMeio = document.createElement('div');
+        const kokushiboOlhoAmareloBaixo = document.createElement('div');
+
+        secaoAnime.appendChild(kokushiboContainer);
+        kokushiboContainer.prepend(kokushiboMarca);
+
+        kokushiboMarca.after(kokushiboOlhoVermelhoTopo);
+        kokushiboOlhoVermelhoTopo.after(kokushiboOlhoVermelhoMeio);
+        kokushiboOlhoVermelhoMeio.after(kokushiboOlhoVermelhoBaixo);
+
+        kokushiboOlhoVermelhoTopo.appendChild(kokushiboOlhoAmareloTopo);
+        kokushiboOlhoVermelhoMeio.appendChild(kokushiboOlhoAmareloMeio);
+        kokushiboOlhoVermelhoBaixo.appendChild(kokushiboOlhoAmareloBaixo);
+
+        kokushiboContainer.classList.add('card-container','kokushibo-background');
+        kokushiboMarca.classList.add('kokushibo-mark');
+        kokushiboOlhoVermelhoTopo.classList.add('kokushibo-eye-red','kokushibo-eye-red--top');
+        kokushiboOlhoVermelhoMeio.classList.add('kokushibo-eye-red','kokushibo-eye-red--mid');
+        kokushiboOlhoVermelhoBaixo.classList.add('kokushibo-eye-red','kokushibo-eye-red--bottom');
+        kokushiboOlhoAmareloTopo.classList.add('kokushibo-eye-yellow', 'kokushibo-eye-yellow--top');
+        kokushiboOlhoAmareloMeio.classList.add('kokushibo-eye-yellow', 'kokushibo-eye-yellow--mid');
+        kokushiboOlhoAmareloBaixo.classList.add('kokushibo-eye-yellow', 'kokushibo-eye-yellow--bottom');
+
+        // inserção de regras de estilo mais verbosa, porém com mais controle
+
+        // a tag style já havia sido criada no akaza
+        styleElement.sheet.insertRule(`.kokushibo-background {
+            background: var(--color-bege);
+            min-width: 400px;
+            height: auto;
+            border-color: var(--color-red);
+            box-shadow:inset 20px 10px 70px 15px var(--color-dark-gray);
+            transition: var(--transition-slow);
+        }`, styleElement.sheet.cssRules.length);
+
+
+        styleElement.sheet.insertRule(`.kokushibo-mark {
+            position: absolute;
+        }`, styleElement.sheet.cssRules.lenght);
+
+        styleElement.sheet.insertRule(`.kokushibo-eye-red {
+            height: 200px;
+            width: 250px;
+            background: repeating-conic-gradient(
+                 from 45deg,
+                 black 0deg 2deg,
+                 var(--color-red) 2deg 15deg
+            );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 65px;
+            margin-bottom: 70px ;
+            outline: 5px solid black;
+            transition: var(--transition-slow);
+            box-shadow: inset 0px 10px 25px 3px; /*sombreamento na parte superior do olho vermelho */
+             // 5px -10px 0 26px black;/* borda preta em volta do contorno vermelho
+        }`,styleElement.sheet.cssRules.length);
+
+         styleElement.sheet.insertRule(`.kokushibo-eye-red--top {
+            transform: skew(10deg) rotate(0deg) translate(20px,40px);  /*o skew irá afetar todos os filhos diretos e indiretos */
+            border-radius: 10px 70%;
+        }`, styleElement.sheet.cssRules.length);
+
+        styleElement.sheet.insertRule(`.kokushibo-eye-red--mid {
+            transform: skew(10deg) rotate(0deg);  /*o skew irá afetar todos os filhos diretos e indiretos */
+            border-radius: 10px 70%;
+        }`, styleElement.sheet.cssRules.length);
+
+        styleElement.sheet.insertRule(`.kokushibo-eye-red--bottom {
+            transform: skew(-10deg) rotate(0deg);  /*o skew irá afetar todos os filhos diretos e indiretos */
+            border-radius:70% 10px;
+        }`, styleElement.sheet.cssRules.length);
+
+        styleElement.sheet.insertRule(`.kokushibo-eye-yellow {
+            width: 120px;
+            aspect-ratio: 1;
+            background: radial-gradient(circle at 50%, var(--color-yellow) 30%, var(--color-orange) 40%);
+            // background: repeating-conic-gradient( from 0deg, black 0deg 5deg, var(--color-golden-yellow) 5deg 72deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            outline: 5px solid black;
+            transition: var(--transition-slow);
+            box-shadow: inset 0 0 10px 10px var(--color-yellow);
+        }`, styleElement.sheet.cssRules.lenght);
+
+        styleElement.sheet.insertRule(`.kokushibo-eye-yellow--top {
+            transform: skew(-10deg) rotate(0deg) translate(0px,0px); /*o skew negativo é para anular o skew herdado da classe '.kokushibo-eye-red--top' */
+        }`, styleElement.sheet.cssRules.lenght);
+
+        styleElement.sheet.insertRule(`.kokushibo-eye-yellow--mid {
+            transform: skew(-10deg) rotate(0deg) translate(0px,0px); /*o skew negativo é para anular o skew herdado da classe '.kokushibo-eye-red--mid' */
+        }`, styleElement.sheet.cssRules.lenght);
+
+        styleElement.sheet.insertRule(`.kokushibo-eye-yellow--bottom {
+            transform: skew(10deg) rotate(0deg) translate(0px,0px); /*o skew positivo é para anular o skew negativo herdado da classe '.kokushibo-eye-red--bottom' */
+        }`, styleElement.sheet.cssRules.lenght);
+
+
+        styleElement.sheet.insertRule(`.kokushibo-eye-yellow--mid::before {
+            content: "壱";
+            display: block;
+            position: absolute;
+            top: -20px;
+            font-family: 'Yuji Syuku', serif;
+            font-size: 100px;
+            font-weight: normal;
+            color: #000;
+            text-shadow:0 0 5px var(--color-red);
+         }`, styleElement.sheet.cssRules.lenght)
+
+         styleElement.sheet.insertRule(`.kokushibo-eye-yellow--top::before, .kokushibo-eye-yellow--bottom::before {
+            content: "";
+            display: block;
+            width: 30px;
+            aspect-ratio: 1;
+            background: black;
+            border-radius: 50%;
+        }`, styleElement.sheet.cssRules.lenght);
+
+        // fim do Kokushibo
 
 
         // Início do Punisher
