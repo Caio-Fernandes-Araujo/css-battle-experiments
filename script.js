@@ -649,6 +649,9 @@
         kokushiboOlhoAmareloMeio.classList.add('kokushibo-eye-yellow', 'kokushibo-eye-yellow--mid');
         kokushiboOlhoAmareloBaixo.classList.add('kokushibo-eye-yellow', 'kokushibo-eye-yellow--bottom');
 
+        const kokushiboOlhosVermelhos = document.querySelectorAll('.kokushibo-eye-red');
+        const kokushiboOlhosAmarelos = document.querySelectorAll('.kokushibo-eye-yellow');
+
         // inserção de regras de estilo mais verbosa, porém com mais controle
 
         // a tag style já havia sido criada no akaza
@@ -657,7 +660,7 @@
             min-width: 400px;
             height: auto;
             border-color: var(--color-red);
-            box-shadow:inset 20px 10px 70px 15px var(--color-dark-gray);
+            box-shadow:inset 0px 10px 40px 15px var(--color-dark-gray);
             transition: var(--transition-slow);
         }`, styleElement.sheet.cssRules.length);
 
@@ -678,11 +681,11 @@
             justify-content: center;
             align-items: center;
             margin-left: 65px;
-            margin-bottom: 70px ;
-            outline: 5px solid black;
+            margin-bottom: 70px;
+            outline: 8px solid black;
             transition: var(--transition-slow);
-            box-shadow: inset 0px 15px 30px 3px; /*sombreamento na parte superior do olho vermelho */
-             // 5px -10px 0 26px black;/* borda preta em volta do contorno vermelho
+            box-shadow: 0px 0px 20px 3px var(--color-bege), inset 0px 15px 30px 3px; /*sombreamento na parte superior do olho vermelho */
+            // 0px 0px 0 10px black; /* borda preta em volta do contorno vermelho */
         }`,styleElement.sheet.cssRules.length);
 
          styleElement.sheet.insertRule(`.kokushibo-eye-red--top {
@@ -691,13 +694,18 @@
         }`, styleElement.sheet.cssRules.length);
 
         styleElement.sheet.insertRule(`.kokushibo-eye-red--mid {
-            transform: skew(10deg) rotate(0deg);  /*o skew irá afetar todos os filhos diretos e indiretos */
+            transform: skew(10deg) rotate(0deg) translate(0px,0px);  /*o skew irá afetar todos os filhos diretos e indiretos */
             border-radius: 10px 70%;
         }`, styleElement.sheet.cssRules.length);
 
         styleElement.sheet.insertRule(`.kokushibo-eye-red--bottom {
-            transform: skew(-10deg) rotate(0deg);  /*o skew irá afetar todos os filhos diretos e indiretos */
+            transform: skew(-10deg) rotate(0deg) translate(0px,0px);  /*o skew irá afetar todos os filhos diretos e indiretos */
             border-radius:70% 10px;
+            box-shadow:0px 0px 20px 3px var(--color-bege), inset 0px 15px 30px 3px; /*sombreamento interno na parte superior do olho vermelho */
+            // 0px -20px 0px 10px var(--color-bege), /* contorno bege acima do olho vermelho */  
+            // -11px -32px 0px 0px gray, /* borda cinza acima do contorno bege */
+            // 10px 9px 0px 10px var(--color-bege), /* contorno bege abaixo do olho vermelho */  
+            // 10px 22px 0px 0px gray /* borda cinza acima do contorno bege */
         }`, styleElement.sheet.cssRules.length);
 
         styleElement.sheet.insertRule(`.kokushibo-eye-yellow {
@@ -737,16 +745,43 @@
             font-weight: normal;
             color: #000;
             text-shadow:0 0 5px var(--color-red);
-         }`, styleElement.sheet.cssRules.lenght)
+         }`, styleElement.sheet.cssRules.lenght);
 
          styleElement.sheet.insertRule(`.kokushibo-eye-yellow--top::before, .kokushibo-eye-yellow--bottom::before {
             content: "";
             display: block;
-            width: 30px;
+            width: 25px;
             aspect-ratio: 1;
             background: black;
             border-radius: 50%;
+            // clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
         }`, styleElement.sheet.cssRules.lenght);
+
+        styleElement.sheet.insertRule(`.kokushiboContainerActive {
+            background-color: var(--color-gray)    
+        }`, styleElement.sheet.cssRules.length);
+
+        styleElement.sheet.insertRule(`.kokushiboEyeRedActive {
+            box-shadow: 0px 0px 40px 4px var(--color-bright-red), inset 0px 15px 30px 3px; /*sombreamento na parte superior do olho vermelho */
+        }`, styleElement.sheet.cssRules.length);
+
+        styleElement.sheet.insertRule(`.kokushiboEyeYellowActive {
+            box-shadow: inset 0 0 10px 10px var(--color-yellow), 0px 0px 10px 10px var(--color-yellow);
+        }`, styleElement.sheet.cssRules.length);
+
+        function kokushiboChangeColors() {
+            kokushiboContainer.classList.toggle('kokushiboContainerActive');
+            kokushiboOlhosVermelhos.forEach( el => {
+                el.classList.toggle('kokushiboEyeRedActive');
+            });
+            kokushiboOlhosAmarelos.forEach( el=> {
+                el.classList.toggle('kokushiboEyeYellowActive');
+            });
+        }
+
+        kokushiboContainer.addEventListener('click', () => {
+            kokushiboChangeColors();
+        })
 
         // fim do Kokushibo
 
