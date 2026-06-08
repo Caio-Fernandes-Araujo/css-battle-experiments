@@ -672,7 +672,7 @@
             background: repeating-conic-gradient(
                  from 45deg,
                  black 0deg 2deg,
-                 var(--color-red) 2deg 15deg
+                 var(--color-bright-red) 2deg 15deg
             );
             display: flex;
             justify-content: center;
@@ -681,12 +681,12 @@
             margin-bottom: 70px ;
             outline: 5px solid black;
             transition: var(--transition-slow);
-            box-shadow: inset 0px 10px 25px 3px; /*sombreamento na parte superior do olho vermelho */
+            box-shadow: inset 0px 15px 30px 3px; /*sombreamento na parte superior do olho vermelho */
              // 5px -10px 0 26px black;/* borda preta em volta do contorno vermelho
         }`,styleElement.sheet.cssRules.length);
 
          styleElement.sheet.insertRule(`.kokushibo-eye-red--top {
-            transform: skew(10deg) rotate(0deg) translate(20px,40px);  /*o skew irá afetar todos os filhos diretos e indiretos */
+            transform: skew(10deg) rotate(0deg) translate(20px,60px);  /*o skew irá afetar todos os filhos diretos e indiretos */
             border-radius: 10px 70%;
         }`, styleElement.sheet.cssRules.length);
 
