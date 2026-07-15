@@ -621,6 +621,7 @@
         // Início do Kokushibo (100% dinânico para treino)
 
         const kokushiboContainer = document.createElement('article');
+        const kokushiboOlhosContainer = document.createElement('div');
         const kokushiboMarca = document.createElement('div');
         const kokushiboOlhoVermelhoTopo = document.createElement('div');
         const kokushiboOlhoVermelhoMeio = document.createElement('div');
@@ -630,7 +631,8 @@
         const kokushiboOlhoAmareloBaixo = document.createElement('div');
 
         secaoAnime.appendChild(kokushiboContainer);
-        kokushiboContainer.prepend(kokushiboMarca);
+        kokushiboContainer.appendChild(kokushiboOlhosContainer);
+        kokushiboOlhosContainer.prepend(kokushiboMarca);
 
         kokushiboMarca.after(kokushiboOlhoVermelhoTopo);
         kokushiboOlhoVermelhoTopo.after(kokushiboOlhoVermelhoMeio);
@@ -641,6 +643,7 @@
         kokushiboOlhoVermelhoBaixo.appendChild(kokushiboOlhoAmareloBaixo);
 
         kokushiboContainer.classList.add('card-container','kokushibo-background');
+        kokushiboOlhosContainer.classList.add('kokushibo-eye-container');
         kokushiboMarca.classList.add('kokushibo-mark');
         kokushiboOlhoVermelhoTopo.classList.add('kokushibo-eye-red','kokushibo-eye-red--top');
         kokushiboOlhoVermelhoMeio.classList.add('kokushibo-eye-red','kokushibo-eye-red--mid');
@@ -658,9 +661,13 @@
         styleElement.sheet.insertRule(`.kokushibo-background {
             background: var(--color-bege);
             min-width: 400px;
-            height: auto;
             border-color: var(--color-red);
+            overflow: hidden;
             box-shadow:inset 0px 10px 40px 15px var(--color-dark-gray);
+        }`, styleElement.sheet.cssRules.length);
+
+        styleElement.sheet.insertRule(`.kokushibo-eye-container {
+            transform: translate(15px, -220px);
             transition: var(--transition-slow);
         }`, styleElement.sheet.cssRules.length);
 
@@ -720,19 +727,19 @@
             outline: 5px solid black;
             transition: var(--transition-slow);
             box-shadow: inset 0 0 10px 10px var(--color-yellow);
-        }`, styleElement.sheet.cssRules.lenght);
+        }`, styleElement.sheet.cssRules.length);
 
         styleElement.sheet.insertRule(`.kokushibo-eye-yellow--top {
             transform: skew(-10deg) rotate(0deg) translate(0px,0px); /*o skew negativo é para anular o skew herdado da classe '.kokushibo-eye-red--top' */
-        }`, styleElement.sheet.cssRules.lenght);
+        }`, styleElement.sheet.cssRules.length);
 
         styleElement.sheet.insertRule(`.kokushibo-eye-yellow--mid {
             transform: skew(-10deg) rotate(0deg) translate(0px,0px); /*o skew negativo é para anular o skew herdado da classe '.kokushibo-eye-red--mid' */
-        }`, styleElement.sheet.cssRules.lenght);
+        }`, styleElement.sheet.cssRules.length);
 
         styleElement.sheet.insertRule(`.kokushibo-eye-yellow--bottom {
             transform: skew(10deg) rotate(0deg) translate(0px,0px); /*o skew positivo é para anular o skew negativo herdado da classe '.kokushibo-eye-red--bottom' */
-        }`, styleElement.sheet.cssRules.lenght);
+        }`, styleElement.sheet.cssRules.length);
 
 
         styleElement.sheet.insertRule(`.kokushibo-eye-yellow--mid::before {
@@ -745,7 +752,7 @@
             font-weight: normal;
             color: #000;
             text-shadow:0 0 5px var(--color-red);
-         }`, styleElement.sheet.cssRules.lenght);
+         }`, styleElement.sheet.cssRules.length);
 
          styleElement.sheet.insertRule(`.kokushibo-eye-yellow--top::before, .kokushibo-eye-yellow--bottom::before {
             content: "";
@@ -755,7 +762,7 @@
             background: black;
             border-radius: 50%;
             // clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-        }`, styleElement.sheet.cssRules.lenght);
+        }`, styleElement.sheet.cssRules.length);
 
         styleElement.sheet.insertRule(`.kokushiboContainerActive {
             background-color: var(--color-gray)    
@@ -769,6 +776,8 @@
             box-shadow: inset 0 0 10px 10px var(--color-yellow), 0px 0px 10px 10px var(--color-yellow);
         }`, styleElement.sheet.cssRules.length);
 
+        
+
         function kokushiboChangeColors() {
             kokushiboContainer.classList.toggle('kokushiboContainerActive');
             kokushiboOlhosVermelhos.forEach( el => {
@@ -779,8 +788,21 @@
             });
         }
 
+        function kokushiboOpenClose() {
+            if(!kokushiboContainer.classList.contains('isOpen')) {
+                kokushiboContainer.style.height = kokushiboContainer.scrollHeight + "px";
+                kokushiboOlhosContainer.style.transform = "translate(15px, 0)"
+                kokushiboContainer.classList.add('isOpen');
+            } else {
+                kokushiboContainer.style.height = 300 + "px";
+                kokushiboOlhosContainer.style.transform = "translate(15px, -220px)"
+                kokushiboContainer.classList.remove('isOpen');
+            }
+        }
+
         kokushiboContainer.addEventListener('click', () => {
             kokushiboChangeColors();
+            kokushiboOpenClose();
         })
 
         // fim do Kokushibo
