@@ -330,33 +330,34 @@
 
         // v3 do script do one piece com trava de cliques durante a animação
         const onePieceContainer = document.querySelector('.one-piece-background');
-        const onePieceDiv = document.createElement('div');
+        const onePieceHat = document.createElement('div');
 
         let hatIsAnimating = false;
+
+        onePieceContainer.appendChild(onePieceHat);
 
         function addHat() {
             if(hatIsAnimating) return;
             
             hatIsAnimating = true;
 
-            onePieceContainer.appendChild(onePieceDiv);
-            onePieceDiv.classList.add('onePieceHat');
+            onePieceHat.classList.add('onePieceHat');
 
-            if(!onePieceDiv.classList.contains('onePieceHatAnimation')) {
+            if(!onePieceHat.classList.contains('onePieceHatAnimation')) {
                 onePieceContainer.classList.add('onePieceContainerActive');
-                onePieceDiv.classList.remove('onePieceHatAnimationReverse');
-                onePieceDiv.classList.add('onePieceHatAnimation');
+                onePieceHat.classList.remove('onePieceHatAnimationReverse');
+                onePieceHat.classList.add('onePieceHatAnimation');
             } else {
                 onePieceContainer.classList.remove('onePieceContainerActive');
-                onePieceDiv.classList.remove('onePieceHatAnimation');
-                onePieceDiv.classList.add('onePieceHatAnimationReverse');
+                onePieceHat.classList.remove('onePieceHatAnimation');
+                onePieceHat.classList.add('onePieceHatAnimationReverse');
                 setTimeout(() => {
-                   onePieceDiv.classList.remove('onePieceHat')
+                   onePieceHat.classList.remove('onePieceHat')
                 }, 1750);
             }
         }
 
-        onePieceDiv.addEventListener('animationend', () => {
+        onePieceHat.addEventListener('animationend', () => {
             hatIsAnimating = false
         });
         onePieceContainer.addEventListener('click', () => {
@@ -660,6 +661,8 @@
         // a tag style já havia sido criada no akaza
         styleElement.sheet.insertRule(`.kokushibo-background {
             background: var(--color-bege);
+            height: 300px;
+            width: 400px;
             min-width: 400px;
             border-color: var(--color-red);
             overflow: hidden;
@@ -667,7 +670,7 @@
         }`, styleElement.sheet.cssRules.length);
 
         styleElement.sheet.insertRule(`.kokushibo-eye-container {
-            transform: translate(15px, -220px);
+            transform: translate(30px, -300px);
             transition: var(--transition-slow);
         }`, styleElement.sheet.cssRules.length);
 
@@ -677,8 +680,8 @@
         }`, styleElement.sheet.cssRules.lenght);
 
         styleElement.sheet.insertRule(`.kokushibo-eye-red {
-            height: 200px;
-            width: 250px;
+            height: 250px;
+            width: 280px;
             background: repeating-conic-gradient(
                  from 45deg,
                  black 0deg 2deg,
@@ -687,7 +690,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-left: 65px;
+            margin-left: 28px;
             margin-bottom: 70px;
             outline: 8px solid black;
             transition: var(--transition-slow);
@@ -696,7 +699,7 @@
         }`,styleElement.sheet.cssRules.length);
 
          styleElement.sheet.insertRule(`.kokushibo-eye-red--top {
-            transform: skew(10deg) rotate(0deg) translate(20px,60px);  /*o skew irá afetar todos os filhos diretos e indiretos */
+            transform: skew(10deg) rotate(0deg) translate(10px,40px);  /*o skew irá afetar todos os filhos diretos e indiretos */
             border-radius: 10px 70%;
         }`, styleElement.sheet.cssRules.length);
 
@@ -791,11 +794,11 @@
         function kokushiboOpenClose() {
             if(!kokushiboContainer.classList.contains('isOpen')) {
                 kokushiboContainer.style.height = kokushiboContainer.scrollHeight + "px";
-                kokushiboOlhosContainer.style.transform = "translate(15px, 0)"
+                kokushiboOlhosContainer.style.transform = "translate(30px, 0)"
                 kokushiboContainer.classList.add('isOpen');
             } else {
                 kokushiboContainer.style.height = 300 + "px";
-                kokushiboOlhosContainer.style.transform = "translate(15px, -220px)"
+                kokushiboOlhosContainer.style.transform = "translate(30px, -300px)"
                 kokushiboContainer.classList.remove('isOpen');
             }
         }

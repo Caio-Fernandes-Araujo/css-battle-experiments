@@ -228,8 +228,9 @@
 
         @layer reset {
             .card-container {
-            width: 40rem;    
+            /* width: 40rem;     */
             height: 30rem;
+            aspect-ratio: 4/3;
             border: .2rem solid var(--color-paleturquoise);
             box-sizing: border-box;
             border-radius: 1rem;
