@@ -1,46 +1,184 @@
 // Início da Lógica da troca de Seções
 
-        //v2 - mais otimizado, função reutilizável:
-        const buttons = document.querySelectorAll('.btn-container');
-        const botaoAnime = document.querySelector('#btn-anime');
-        const botaoHero = document.querySelector('#btn-hero');
-        const botaoHypno = document.querySelector('#btn-hypno');
-
-        const sections = document.querySelectorAll('.section-container');
+        // V4 - com lógica para remover a mesma secao no segundo clique (função reutilizável)
+        const secaoLista = document.querySelectorAll('.section-container');
         const secaoAnime = document.querySelector('#sec-anime');
         const secaoHero = document.querySelector('#sec-hero');
         const secaoHypno = document.querySelector('#sec-hypno');
 
-        function AddStyleButtom(botaoParaAtivar) {
-            buttons.forEach(el => {
-                el.classList.remove('btnActive')
-            });
+        const botaoLista = document.querySelectorAll('.btn-container');
+        const botaoAnime = document.querySelector('#btn-anime');
+        const botaoHero = document.querySelector('#btn-hero');
+        const botaoHypno = document.querySelector('#btn-hypno');
 
-            botaoParaAtivar.classList.add('btnActive');
+        function mostrarSecao(secao) {
+            if(!secao.classList.contains('sectionActive')) {
+                secaoLista.forEach(el => {
+                    el.classList.remove('sectionActive')
+                });
+                secao.classList.add('sectionActive');
+            } else {
+                secao.classList.remove('sectionActive');
+            }
         }
 
-        function showSection(secaoParaAtivar) {
-            sections.forEach(el => {
-                el.classList.remove('sectionActive')
-            });
-
-            secaoParaAtivar.classList.add('sectionActive');
+        function estilizarBotao(botao) {
+            if(!botao.classList.contains('btnActive')) {
+                botaoLista.forEach(el => {
+                    el.classList.remove('btnActive')
+                });
+                botao.classList.add('btnActive')
+            } else {
+                botao.classList.remove('btnActive')
+            }
         }
 
         botaoAnime.addEventListener('click', () => {
-            AddStyleButtom(botaoAnime);
-            showSection(secaoAnime);
-        })
+            mostrarSecao(secaoAnime);
+            estilizarBotao(botaoAnime);
+        });
 
         botaoHero.addEventListener('click', () => {
-            AddStyleButtom(botaoHero);
-            showSection(secaoHero);
-        })
+            mostrarSecao(secaoHero);
+            estilizarBotao(botaoHero);
+        });
 
         botaoHypno.addEventListener('click', () => {
-            AddStyleButtom(botaoHypno);
-            showSection(secaoHypno);
+            mostrarSecao(secaoHypno);
+            estilizarBotao(botaoHypno);
         });
+
+        // <<<<<<<----------------------------------------------------------------------------------->>>>>>>
+
+        // V3 - com a lógica de remover a mesma secao no segundo clique (mais verbosa)
+        // const secaoAnime = document.querySelector('#sec-anime');
+        // const secaoHero = document.querySelector('#sec-hero');
+        // const secaoHypno = document.querySelector('#sec-hypno');
+
+        // const botaoAnime = document.querySelector('#btn-anime');
+        // const botaoHero = document.querySelector('#btn-hero');
+        // const botaoHypno = document.querySelector('#btn-hypno');
+
+        // function mostrarSecaoAnime() {
+        //     if(!secaoAnime.classList.contains('sectionActive')) {
+        //         secaoHero.classList.remove('sectionActive');
+        //         secaoHypno.classList.remove('sectionActive');
+        //         secaoAnime.classList.add('sectionActive');
+        //     } else {
+        //         secaoAnime.classList.remove('sectionActive');
+        //     }
+        // }
+
+        // function mostrarSecaoHero() {
+        //     if(!secaoHero.classList.contains('sectionActive')) {
+        //         secaoAnime.classList.remove('sectionActive');
+        //         secaoHypno.classList.remove('sectionActive');
+        //         secaoHero.classList.add('sectionActive');
+        //     } else {
+        //         secaoHero.classList.remove('sectionActive');
+        //     }
+        // }
+
+        // function mostrarSecaoHypno() {
+        //     if(!secaoHypno.classList.contains('sectionActive')) {
+        //         secaoAnime.classList.remove('sectionActive');
+        //         secaoHero.classList.remove('sectionActive');
+        //         secaoHypno.classList.add('sectionActive');
+        //     } else {
+        //         secaoHypno.classList.remove('sectionActive');
+        //     }
+        // }
+
+        // function estilizarBotaoAnime() {
+        //     if(!botaoAnime.classList.contains('btnActive')) {
+        //         botaoHero.classList.remove('btnActive');
+        //         botaoHypno.classList.remove('btnActive');
+        //         botaoAnime.classList.add('btnActive');
+        //     } else {
+        //         botaoAnime.classList.remove('btnActive');
+        //     }
+        // }
+
+        // function estilizarBotaoHero() {
+        //     if(!botaoHero.classList.contains('btnActive')) {
+        //         botaoAnime.classList.remove('btnActive');
+        //         botaoHypno.classList.remove('btnActive');
+        //         botaoHero.classList.add('btnActive');
+        //     } else {
+        //         botaoHero.classList.remove('btnActive');
+        //     }
+        // }
+
+        // function estilizarBotaoHypno() {
+        //     if(!botaoHypno.classList.contains('btnActive')) {
+        //         botaoAnime.classList.remove('btnActive');
+        //         botaoHero.classList.remove('btnActive');
+        //         botaoHypno.classList.add('btnActive');
+        //     } else {
+        //         botaoHypno.classList.remove('btnActive');
+        //     }
+        // }
+
+        // botaoAnime.addEventListener('click', () => {
+        //     mostrarSecaoAnime();
+        //     estilizarBotaoAnime();
+        // });
+
+        // botaoHero.addEventListener('click', () => {
+        //     mostrarSecaoHero();
+        //     estilizarBotaoHero();
+        // });
+
+        // botaoHypno.addEventListener('click', () => {
+        //     mostrarSecaoHypno();
+        //     estilizarBotaoHypno();
+        // });
+
+        // <<<<<<<----------------------------------------------------------------------------------->>>>>>>
+
+        //v2 - mais otimizado, função reutilizável:
+        // const buttons = document.querySelectorAll('.btn-container');
+        // const botaoAnime = document.querySelector('#btn-anime');
+        // const botaoHero = document.querySelector('#btn-hero');
+        // const botaoHypno = document.querySelector('#btn-hypno');
+
+        // const sections = document.querySelectorAll('.section-container');
+        // const secaoAnime = document.querySelector('#sec-anime');
+        // const secaoHero = document.querySelector('#sec-hero');
+        // const secaoHypno = document.querySelector('#sec-hypno');
+
+        // function AddStyleButtom(botaoParaAtivar) {
+        //     buttons.forEach(el => {
+        //         el.classList.remove('btnActive')
+        //     });
+
+        //     botaoParaAtivar.classList.add('btnActive');
+        // }
+
+        // function showSection(secaoParaAtivar) {
+        //     sections.forEach(el => {
+        //         el.classList.remove('sectionActive')
+        //     });
+
+        //     secaoParaAtivar.classList.add('sectionActive');
+        // }
+
+        // botaoAnime.addEventListener('click', () => {
+        //     AddStyleButtom(botaoAnime);
+        //     showSection(secaoAnime);
+        // })
+
+        // botaoHero.addEventListener('click', () => {
+        //     AddStyleButtom(botaoHero);
+        //     showSection(secaoHero);
+        // })
+
+        // botaoHypno.addEventListener('click', () => {
+        //     AddStyleButtom(botaoHypno);
+        //     showSection(secaoHypno);
+        // });
+
+        // <<<<<<<----------------------------------------------------------------------------------->>>>>>>
 
        /*v1 - mais verboso, feito na mão:
         const botaoAnime = document.querySelector('#btn-anime');
